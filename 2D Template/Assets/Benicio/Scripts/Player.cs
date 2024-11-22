@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
     Vector2Int pos;
     bool moving;
+    Tilemap walls;
 
     void Start()
     {
         pos = new((int)transform.position.x, (int)transform.position.y);
+        walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
     }
 
     void Update()
@@ -29,15 +32,17 @@ public class Player : MonoBehaviour
 
     IEnumerator Move(Vector2Int delta)
     {
-        moving = true;
-        Vector2Int startPos = pos;
-        pos += delta;
-        for (float t = 0; t < 1; t += Time.deltaTime * 6)
+        if (walls.GetTile((Vector3Int)(pos + delta)) is null)
         {
-            transform.position = Vector2.Lerp(startPos, pos, t);
-            yield return null;
-            Debug.Log(transform.position + ": " + t);
+            moving = true;
+            Vector2Int startPos = pos;
+            pos += delta;
+            for (float t = 0; t < 1; t += Time.deltaTime * 6)
+            {
+                transform.position = Vector2.Lerp(startPos, pos, t);
+                yield return null;
+            }
+            moving = false;
         }
-        moving = false;
     }
 }
