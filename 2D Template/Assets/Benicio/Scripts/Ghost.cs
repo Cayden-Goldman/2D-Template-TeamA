@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class Ghost : MonoBehaviour
 {
-    Vector2Int pos;
-    bool moving;
+    public static Vector2Int pos;
+
     Tilemap walls;
+    bool moving;
 
     void Start()
     {
@@ -27,12 +28,18 @@ public class Player : MonoBehaviour
                 StartCoroutine(Move(new(0, 1)));
             else if (Input.GetKey(KeyCode.DownArrow))
                 StartCoroutine(Move(new(0, -1)));
+            else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
+            {
+                Vessel.ghostMode = false;
+                Destroy(gameObject);
+            }
         }
     }
 
     IEnumerator Move(Vector2Int delta)
     {
-        if (walls.GetTile((Vector3Int)(pos + delta)) is null)
+        TileBase tile = walls.GetTile((Vector3Int)(pos + delta));
+        if (tile == null)
         {
             moving = true;
             Vector2Int startPos = pos;
