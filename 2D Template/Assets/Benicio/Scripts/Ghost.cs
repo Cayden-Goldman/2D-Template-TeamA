@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Ghost : MonoBehaviour
 {
     public static Vector2Int pos;
+    public static readonly List<string> passableTiles = new() { "baul" };
 
     Tilemap walls;
     bool moving;
@@ -39,7 +40,12 @@ public class Ghost : MonoBehaviour
     IEnumerator Move(Vector2Int delta)
     {
         TileBase tile = walls.GetTile((Vector3Int)(pos + delta));
-        if (tile == null)
+        bool canMove = false;
+        if (tile == null) 
+            canMove = true;
+        else if (passableTiles.Contains(tile.name))
+            canMove = true;
+        if (canMove)
         {
             moving = true;
             Vector2Int startPos = pos;
