@@ -180,7 +180,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -32768
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -269,15 +269,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283840996652662659, guid: 96d3f89118d44c742bae8c5aebc4372c, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.36327344
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283840996652662659, guid: 96d3f89118d44c742bae8c5aebc4372c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.33056134
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2283840996652662659, guid: 96d3f89118d44c742bae8c5aebc4372c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.35703593
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: The Dust
       objectReference: {fileID: 0}
+    - target: {fileID: 2114789678111084648, guid: fb9440bd24bd0ca4eb69192544304d3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fb9440bd24bd0ca4eb69192544304d3b, type: 3}
@@ -359,11 +363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3825616181304832206, guid: 25dbbbca08d0399499d7e6e233df71aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
+      value: 3.49
       objectReference: {fileID: 0}
     - target: {fileID: 3825616181304832206, guid: 25dbbbca08d0399499d7e6e233df71aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.46
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 3825616181304832206, guid: 25dbbbca08d0399499d7e6e233df71aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -422,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5332848188254038279, guid: 4d1842aa0d391194ab7fa86231b2c5fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1112
+      value: -3.39
       objectReference: {fileID: 0}
     - target: {fileID: 5332848188254038279, guid: 4d1842aa0d391194ab7fa86231b2c5fc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -463,3 +467,62 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d1842aa0d391194ab7fa86231b2c5fc, type: 3}
+--- !u!1001 &7735281775678989914
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433097, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735281776500433098, guid: 645798de6b734c449a46d46802c6728b, type: 3}
+      propertyPath: m_Name
+      value: The Leaves
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 645798de6b734c449a46d46802c6728b, type: 3}
