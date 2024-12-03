@@ -23,13 +23,13 @@ public class Vessel : MonoBehaviour
     {
         if (!moving && !ghostMode)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
                 StartCoroutine(Move(new(-1, 0)));
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.D))
                 StartCoroutine(Move(new(1, 0)));
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.W))
                 StartCoroutine(Move(new(0, 1)));
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.S))
                 StartCoroutine(Move(new(0, -1)));
             else if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -44,13 +44,34 @@ public class Vessel : MonoBehaviour
         TileBase tile = walls.GetTile((Vector3Int)(pos + delta));
         if (tile == null)
         {
-            moving = true;
-            Vector2Int startPos = pos;
-            pos += delta;
-            for (float t = 0; t < 1; t += Time.deltaTime * 6)
+            if (Movable.positions.Contains(pos + delta))
             {
-                transform.position = Vector2.Lerp(startPos, pos, t);
-                yield return null;
+                tile = walls.GetTile((Vector3Int)(pos + delta * 2));
+                if (tile == null)
+                {
+                    GameObject obj = Movable.objects[Movable.positions.IndexOf(pos + delta)];
+                    Movable.positions[Movable.positions.IndexOf(pos + delta)] += delta;
+                    moving = true;
+                    Vector2Int startPos = pos;
+                    pos += delta;
+                    for (float t = 0; t < 1; t += Time.deltaTime * 6)
+                    {
+                        transform.position = Vector2.Lerp(startPos, pos, t);
+                        obj.transform.position = transform.position + (Vector3)(Vector2)delta;
+                        yield return 3;
+                    }
+                }
+            }
+            else
+            {
+                moving = true;
+                Vector2Int startPos = pos;
+                pos += delta;
+                for (float t = 0; t < 1; t += Time.deltaTime * 6)
+                {
+                    transform.position = Vector2.Lerp(startPos, pos, t);
+                    yield return null;
+                }
             }
             moving = false;
         }
