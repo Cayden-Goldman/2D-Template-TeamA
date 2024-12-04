@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class LightFlicker : MonoBehaviour
 {
-    Light2D light;
+    new Light2D light;
     float lightness;
     float green = 0.3f;
     float startRad;
