@@ -21,13 +21,13 @@ public class Ghost : MonoBehaviour
     {
         if (!moving)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
                 StartCoroutine(Move(new(-1, 0)));
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.D))
                 StartCoroutine(Move(new(1, 0)));
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.W))
                 StartCoroutine(Move(new(0, 1)));
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.S))
                 StartCoroutine(Move(new(0, -1)));
             else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
             {
