@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 379d8fb51d4fa9a4db2d4aa2d6fe1ddc
+guid: e9a63237682645347b5c12df50192745
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -131,7 +131,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_0
+      name: ALT_MC_walk_LEFT_0
       rect:
         serializedVersion: 2
         x: 0
@@ -145,17 +145,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7147860c1afa2504e869912dcd247d03
-      internalID: -1279271616
+      spriteID: 661983cf5838e134d9dfbd70cfbfe0ff
+      internalID: -175883274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_1
+      name: ALT_MC_walk_LEFT_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 0
         width: 28
         height: 32
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bf77943280e9ea4498643d7efd4390c
-      internalID: 73346226
+      spriteID: 1081d1a627e2728448bc17cad004e6e6
+      internalID: -1213818874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_2
+      name: ALT_MC_walk_LEFT_2
       rect:
         serializedVersion: 2
         x: 60
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f8a15ed76bbfda4e893edddd9f29f93
-      internalID: -802523815
+      spriteID: 4b5c63487b3268943ab0b52f6e6d6e9f
+      internalID: -1295122014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_3
+      name: ALT_MC_walk_LEFT_3
       rect:
         serializedVersion: 2
         x: 88
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b479ee6bed2df64895b11a9761b4b61
-      internalID: -2023423695
+      spriteID: 020a6436c097c1146a6e39c2481f3ce0
+      internalID: -371753514
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ALT_MC_walk_RIGHT_4: -1907806318
-      ALT_MC_walk_RIGHT_2: -802523815
-      ALT_MC_walk_RIGHT_3: -2023423695
-      ALT_MC_walk_RIGHT_0: -1279271616
-      ALT_MC_walk_RIGHT_1: 73346226
+      ALT_MC_walk_LEFT_2: -1295122014
+      ALT_MC_walk_LEFT_1: -1213818874
+      ALT_MC_walk_LEFT_3: -371753514
+      ALT_MC_walk_LEFT_4: -301715137
+      ALT_MC_walk_LEFT_0: -175883274
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

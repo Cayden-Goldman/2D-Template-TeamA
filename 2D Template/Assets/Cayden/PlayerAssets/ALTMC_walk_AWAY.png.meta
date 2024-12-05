@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 379d8fb51d4fa9a4db2d4aa2d6fe1ddc
+guid: 3249e214699affa4b9427f5be47e808e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -131,7 +131,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_0
+      name: ALTMC_walk_AWAY_0
       rect:
         serializedVersion: 2
         x: 0
@@ -145,17 +145,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7147860c1afa2504e869912dcd247d03
-      internalID: -1279271616
+      spriteID: b05c0787c8d6c114d86309dd745a4b43
+      internalID: 785042149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_1
+      name: ALTMC_walk_AWAY_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 30
         y: 0
         width: 28
         height: 32
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bf77943280e9ea4498643d7efd4390c
-      internalID: 73346226
+      spriteID: 8c5d0d31a3a9c8d4cae351be5c3d9a16
+      internalID: -658285237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_2
+      name: ALTMC_walk_AWAY_2
       rect:
         serializedVersion: 2
         x: 60
@@ -187,17 +187,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f8a15ed76bbfda4e893edddd9f29f93
-      internalID: -802523815
+      spriteID: 3d92227df5c75d246b034e12ab9cc755
+      internalID: -11104420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALT_MC_walk_RIGHT_3
+      name: ALTMC_walk_AWAY_3
       rect:
         serializedVersion: 2
-        x: 88
+        x: 91
         y: 0
         width: 28
         height: 32
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b479ee6bed2df64895b11a9761b4b61
-      internalID: -2023423695
+      spriteID: 6c392036dd466cf4b93310963132d7f2
+      internalID: 1730274223
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ALT_MC_walk_RIGHT_4: -1907806318
-      ALT_MC_walk_RIGHT_2: -802523815
-      ALT_MC_walk_RIGHT_3: -2023423695
-      ALT_MC_walk_RIGHT_0: -1279271616
-      ALT_MC_walk_RIGHT_1: 73346226
+      ALTMC_walk_AWAY_1: -658285237
+      ALTMC_walk_AWAY_2: -11104420
+      ALTMC_walk_AWAY_0: 785042149
+      ALTMC_walk_AWAY_3: 1730274223
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

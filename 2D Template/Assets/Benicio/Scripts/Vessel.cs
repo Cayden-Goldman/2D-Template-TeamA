@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,6 +10,7 @@ public class Vessel : MonoBehaviour
     public static bool ghostMode;
 
     public GameObject ghostObj;
+    public Animator animator;
 
     Tilemap walls;
     bool moving;
@@ -23,14 +25,26 @@ public class Vessel : MonoBehaviour
     {
         if (!moving && !ghostMode)
         {
-            if (Input.GetKey(KeyCode.A))
-                StartCoroutine(Move(new(-1, 0)));
-            else if (Input.GetKey(KeyCode.D))
-                StartCoroutine(Move(new(1, 0)));
-            else if (Input.GetKey(KeyCode.W))
-                StartCoroutine(Move(new(0, 1)));
-            else if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S))
+            {
                 StartCoroutine(Move(new(0, -1)));
+                animator.SetInteger("Direction", 0);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                StartCoroutine(Move(new(-1, 0))); 
+                animator.SetInteger("Direction", 1);
+            }
+            else if (Input.GetKey(KeyCode.W))
+            {
+                StartCoroutine(Move(new(0, 1)));
+                animator.SetInteger("Direction", 2);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                StartCoroutine(Move(new(1, 0)));
+                animator.SetInteger("Direction", 3);
+            }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 ghostMode = true;
@@ -65,6 +79,7 @@ public class Vessel : MonoBehaviour
             else
             {
                 moving = true;
+                animator.SetBool("IsWalking", true);
                 Vector2Int startPos = pos;
                 pos += delta;
                 for (float t = 0; t < 1; t += Time.deltaTime * 6)
@@ -72,6 +87,7 @@ public class Vessel : MonoBehaviour
                     transform.position = Vector2.Lerp(startPos, pos, t);
                     yield return null;
                 }
+                animator.SetBool("IsWalking", false);
             }
             moving = false;
         }
