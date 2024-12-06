@@ -136,8 +136,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: guard_walk_FORWARD_1
       rect:
         serializedVersion: 2
-        x: 30
+        x: 32
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: guard_walk_FORWARD_2
       rect:
         serializedVersion: 2
-        x: 60
+        x: 64
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: guard_walk_FORWARD_3
       rect:
         serializedVersion: 2
-        x: 91
+        x: 96
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}

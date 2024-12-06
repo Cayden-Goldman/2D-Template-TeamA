@@ -10,15 +10,22 @@ public class Vessel : MonoBehaviour
     public static bool ghostMode;
 
     public GameObject ghostObj;
-    public Animator animator;
+    public Material possessMat;
+    public Material defaultMat;
 
     Tilemap walls;
     bool moving;
+    Sprite currentSprite;
+    SpriteRenderer sr;
+    Animator animator;
 
     void Start()
     {
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>(); 
+        SetShader();
     }
 
     void Update()
@@ -48,8 +55,11 @@ public class Vessel : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 ghostMode = true;
+                sr.material = defaultMat;
                 Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
             }
+            else
+                animator.SetBool("IsWalking", false);
         }
     }
 
@@ -66,6 +76,7 @@ public class Vessel : MonoBehaviour
                     GameObject obj = Movable.objects[Movable.positions.IndexOf(pos + delta)];
                     Movable.positions[Movable.positions.IndexOf(pos + delta)] += delta;
                     moving = true;
+                    animator.SetBool("IsWalking", true);
                     Vector2Int startPos = pos;
                     pos += delta;
                     for (float t = 0; t < 1; t += Time.deltaTime * 6)
@@ -87,9 +98,30 @@ public class Vessel : MonoBehaviour
                     transform.position = Vector2.Lerp(startPos, pos, t);
                     yield return null;
                 }
-                animator.SetBool("IsWalking", false);
             }
             moving = false;
         }
+    }
+
+    IEnumerator UpdateShader()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => currentSprite != sr.sprite);
+            Debug.Log("few");
+            if (!ghostMode)
+            {
+                currentSprite = sr.sprite;
+                sr.material.SetTexture("_Texture", currentSprite.texture);
+            }
+            else
+                break;
+        }
+    }
+
+    public void SetShader()
+    {
+        sr.material = possessMat;
+        StartCoroutine(UpdateShader());
     }
 }

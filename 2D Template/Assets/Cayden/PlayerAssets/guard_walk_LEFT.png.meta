@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3249e214699affa4b9427f5be47e808e
+guid: d1424bf3985dc7a48b5d26b853d0adf9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,18 +104,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -131,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ALTMC_walk_AWAY_0
+      name: guard_walk_LEFT_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b05c0787c8d6c114d86309dd745a4b43
-      internalID: 785042149
+      spriteID: 4297110bd6e87fc45b9055ab8cda10cb
+      internalID: -412949288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALTMC_walk_AWAY_1
+      name: guard_walk_LEFT_1
       rect:
         serializedVersion: 2
-        x: 30
+        x: 32
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c5d0d31a3a9c8d4cae351be5c3d9a16
-      internalID: -658285237
+      spriteID: 84651c63cea70bb49a1c90247a0652e0
+      internalID: 11872030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALTMC_walk_AWAY_2
+      name: guard_walk_LEFT_2
       rect:
         serializedVersion: 2
-        x: 60
+        x: 64
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d92227df5c75d246b034e12ab9cc755
-      internalID: -11104420
+      spriteID: 5e8a025b93bd3fa4cb54599f48ca5e3f
+      internalID: 356118576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ALTMC_walk_AWAY_3
+      name: guard_walk_LEFT_3
       rect:
         serializedVersion: 2
-        x: 91
+        x: 96
         y: 0
-        width: 28
-        height: 32
+        width: 32
+        height: 34
       alignment: 9
       pivot: {x: 0.25, y: -0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +196,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c392036dd466cf4b93310963132d7f2
-      internalID: 1730274223
+      spriteID: a0ccdff9451ad1b41912e02265439c82
+      internalID: -1769078059
       vertices: []
       indices: 
       edges: []
@@ -225,10 +213,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ALTMC_walk_AWAY_1: -658285237
-      ALTMC_walk_AWAY_2: -11104420
-      ALTMC_walk_AWAY_0: 785042149
-      ALTMC_walk_AWAY_3: 1730274223
+      guard_walk_LEFT_1: 11872030
+      guard_walk_LEFT_4: -903618457
+      guard_walk_LEFT_2: 356118576
+      guard_walk_LEFT_0: -412949288
+      guard_walk_LEFT_3: -1769078059
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
