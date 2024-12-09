@@ -32,7 +32,6 @@ public class Ghost : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
             {
                 Vessel.ghostMode = false;
-                GameObject.Find("Player").GetComponent<Vessel>().SetShader();
                 Destroy(gameObject);
             }
         }
