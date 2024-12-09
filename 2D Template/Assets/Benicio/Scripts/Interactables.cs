@@ -29,6 +29,7 @@ public abstract class Interactable
 
 public class CrateGame : Interactable
 {
+
     public CrateGame(string text)
     {
         this.text = text;
@@ -36,6 +37,8 @@ public class CrateGame : Interactable
 
     public override void Interact()
     {
-
+        CrateGame game = new CrateGame(text);
+        game.Equals(this);
+        BoxMinigame.evnt.Invoke();
     }
 }
