@@ -28,7 +28,7 @@ public class Vessel : MonoBehaviour
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        UpdateShader();
+        SetShader();
     }
 
     void Update()
@@ -46,6 +46,7 @@ public class Vessel : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 ghostMode = true;
+                sr.material = defaultMat;
                 Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
             }
             else
@@ -136,7 +137,7 @@ public class Vessel : MonoBehaviour
     {
         while (true)
         {
-            yield return null;//ew WaitUntil(() => currentSprite != sr.sprite);
+            yield return new WaitUntil(() => currentSprite != sr.sprite);
             if (!ghostMode)
             {
                 currentSprite = sr.sprite;
