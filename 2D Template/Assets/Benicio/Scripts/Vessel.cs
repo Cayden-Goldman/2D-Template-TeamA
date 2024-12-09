@@ -1,15 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Vessel : MonoBehaviour
 {
+    public static readonly Vector2Int[] directions = new Vector2Int[] { new(0, -1), new(-1, 0), new(0, 1), new(1, 0) };
+
     public static Vector2Int pos;
     public static bool ghostMode;
 
     public GameObject ghostObj;
+    public GameObject interactText;
     public Material possessMat;
     public Material defaultMat;
 
@@ -18,13 +20,14 @@ public class Vessel : MonoBehaviour
     Sprite currentSprite;
     SpriteRenderer sr;
     Animator animator;
+    int directionDown = -1;
 
     void Start()
     {
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
         SetShader();
     }
 
@@ -33,25 +36,13 @@ public class Vessel : MonoBehaviour
         if (!moving && !ghostMode)
         {
             if (Input.GetKey(KeyCode.S))
-            {
-                StartCoroutine(Move(new(0, -1)));
-                animator.SetInteger("Direction", 0);
-            }
+                directionDown = 0;
             else if (Input.GetKey(KeyCode.A))
-            {
-                StartCoroutine(Move(new(-1, 0))); 
-                animator.SetInteger("Direction", 1);
-            }
+                directionDown = 1;
             else if (Input.GetKey(KeyCode.W))
-            {
-                StartCoroutine(Move(new(0, 1)));
-                animator.SetInteger("Direction", 2);
-            }
+                directionDown = 2;
             else if (Input.GetKey(KeyCode.D))
-            {
-                StartCoroutine(Move(new(1, 0)));
-                animator.SetInteger("Direction", 3);
-            }
+                directionDown = 3;
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 ghostMode = true;
@@ -60,6 +51,23 @@ public class Vessel : MonoBehaviour
             }
             else
                 animator.SetBool("IsWalking", false);
+            if (directionDown > -1)
+            {
+                StartCoroutine(Move(directions[directionDown]));
+                animator.SetInteger("Direction", directionDown);
+                directionDown = -1;
+            }
+        }
+        else if (moving)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+                directionDown = 0;
+            else if (Input.GetKeyDown(KeyCode.A))
+                directionDown = 1;
+            else if (Input.GetKeyDown(KeyCode.W))
+                directionDown = 2;
+            else if (Input.GetKeyDown(KeyCode.D))
+                directionDown = 3;
         }
     }
 
@@ -68,6 +76,7 @@ public class Vessel : MonoBehaviour
         TileBase tile = walls.GetTile((Vector3Int)(pos + delta));
         if (tile == null)
         {
+            interactText.SetActive(false);
             if (Movable.positions.Contains(pos + delta))
             {
                 tile = walls.GetTile((Vector3Int)(pos + delta * 2));
@@ -83,11 +92,11 @@ public class Vessel : MonoBehaviour
                     {
                         transform.position = Vector2.Lerp(startPos, pos, t);
                         obj.transform.position = transform.position + (Vector3)(Vector2)delta;
-                        yield return 3;
+                        yield return null;
                     }
                 }
             }
-            else
+            else if (!Interactables.positions.Contains(pos + delta))
             {
                 moving = true;
                 animator.SetBool("IsWalking", true);
@@ -100,6 +109,27 @@ public class Vessel : MonoBehaviour
                 }
             }
             moving = false;
+            for (int i = 0; i < 4; i++)
+            {
+                if (Interactables.positions.Contains(pos + directions[i]))
+                {
+                    Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
+                    interactText.GetComponent<TextMeshPro>().text = interactable.text;
+                    foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
+                        outline.text = interactable.text;
+                    interactText.transform.localPosition = new Vector2(0.5f, 1) + directions[i];
+                    interactText.SetActive(true);
+                    while (!moving)
+                    {
+                        yield return null;
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            interactable.Interact();
+                        }
+                    }
+                    break;
+                }
+            }
         }
     }
 
@@ -107,8 +137,7 @@ public class Vessel : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => currentSprite != sr.sprite);
-            Debug.Log("few");
+            yield return null;//ew WaitUntil(() => currentSprite != sr.sprite);
             if (!ghostMode)
             {
                 currentSprite = sr.sprite;
