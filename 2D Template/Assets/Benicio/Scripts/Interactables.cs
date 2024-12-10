@@ -7,12 +7,17 @@ public class Interactables : MonoBehaviour
     public static List<Vector2Int> positions = new();
     public static List<Interactable> interactables = new();
 
-    public int objectId;
+    public enum Objects { 
+    boxGame,
+    cringe,
+    lung };
+
+    public Objects obj;
 
     void Start()
     {
         positions.Add(new((int)transform.position.x, (int)transform.position.y));
-        switch (objectId)
+        switch (obj)
         {
             case 0:
                 interactables.Add(new CrateGame("Search", true));
