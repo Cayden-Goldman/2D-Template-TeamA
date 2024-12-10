@@ -15,4 +15,19 @@ public class ButtonPress : MonoBehaviour
     {
         
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
 }
