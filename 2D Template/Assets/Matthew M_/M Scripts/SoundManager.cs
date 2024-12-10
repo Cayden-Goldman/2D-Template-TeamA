@@ -25,6 +25,16 @@ public class SoundManager : MonoBehaviour
         Save();
     }
 
+    public void VolumeZero()
+    {
+        AudioListener.volume = 0;
+    }
+
+    public void VolumeOne()
+    {
+        AudioListener.volume = volumeSlider.value;
+    }
+
     private void Load()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
