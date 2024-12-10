@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class CarScript : MonoBehaviour, IPointerEnterHandler
 {
     public Vector3 mouse;
+    public GameObject[] gameObjects;
     public bool vertical;
     public void Update()
     {
@@ -13,11 +14,10 @@ public class CarScript : MonoBehaviour, IPointerEnterHandler
     }
     public void OnMouseDrag()
     {
-        Debug.Log("Hi");
         if(vertical)
-        transform.position = new Vector3(transform.position.x, Camera.main.ScreenToWorldPoint(mouse).y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).y + .5f) - .5f, transform.position.z);
         else
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(mouse).x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).x + .5f) - .5f , transform.position.y, transform.position.z);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
