@@ -114,20 +114,23 @@ public class Vessel : MonoBehaviour
                 if (Interactables.positions.Contains(pos + directions[i]))
                 {
                     Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
-                    interactText.GetComponent<TextMeshPro>().text = interactable.text;
-                    foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
-                        outline.text = interactable.text;
-                    interactText.transform.localPosition = new Vector2(0.5f, 1) + directions[i];
-                    interactText.SetActive(true);
-                    while (!moving)
+                    if (!interactable.ghostOnly)
                     {
-                        yield return null;
-                        if (Input.GetKeyDown(KeyCode.E))
+                        interactText.GetComponent<TextMeshPro>().text = interactable.text;
+                        foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
+                            outline.text = interactable.text;
+                        interactText.transform.localPosition = new Vector2(0.5f, 1) + directions[i];
+                        interactText.SetActive(true);
+                        while (!moving)
                         {
-                            interactable.Interact();
+                            yield return null;
+                            if (Input.GetKeyDown(KeyCode.E))
+                            {
+                                interactable.Interact();
+                            }
                         }
+                        break; 
                     }
-                    break;
                 }
             }
         }

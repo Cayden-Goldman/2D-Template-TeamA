@@ -15,7 +15,7 @@ public class Interactables : MonoBehaviour
         switch (objectId)
         {
             case 0:
-                interactables.Add(new CrateGame("Searchmjui9"));
+                interactables.Add(new CrateGame("Search", true));
                 break;
         }
     }
@@ -24,21 +24,19 @@ public class Interactables : MonoBehaviour
 public abstract class Interactable
 {
     public string text;
+    public bool ghostOnly;
     public abstract void Interact();
 }
 
 public class CrateGame : Interactable
 {
-
-    public CrateGame(string text)
+    public CrateGame(string text, bool ghostOnly = false)
     {
         this.text = text;
     }
 
     public override void Interact()
     {
-        CrateGame game = new CrateGame(text);
-        game.Equals(this);
         BoxMinigame.evnt.Invoke();
     }
 }
