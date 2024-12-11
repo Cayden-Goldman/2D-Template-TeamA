@@ -9,7 +9,7 @@ public class Interactables : MonoBehaviour
 
     public enum Objects { 
     boxGame,
-    cringe,
+    lever,
     lung };
 
     public Objects obj;
@@ -21,6 +21,9 @@ public class Interactables : MonoBehaviour
         {
             case 0:
                 interactables.Add(new CrateGame("Search", true));
+                break;
+            case (Objects)1:
+                interactables.Add(new Lever("Pull", true));
                 break;
         }
     }
@@ -43,5 +46,19 @@ public class CrateGame : Interactable
     public override void Interact()
     {
         BoxMinigame.evnt.Invoke();
+    }
+}
+
+public class Lever : Interactable
+{
+    
+    public Lever(string text, bool ghostOnly = false)
+    {
+        this.text = text;
+    }
+
+    public override void Interact()
+    {
+        LeverEvent.evennt.Invoke();
     }
 }
