@@ -10,11 +10,17 @@ public class Ghost : MonoBehaviour
 
     Tilemap walls;
     bool moving;
+    Sprite currentSprite;
+    SpriteRenderer sr;
+    Animator animator;
 
     void Start()
     {
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        StartCoroutine(UpdateShader());
     }
 
     void Update()
@@ -56,6 +62,16 @@ public class Ghost : MonoBehaviour
                 yield return null;
             }
             moving = false;
+        }
+    }
+
+    IEnumerator UpdateShader()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => currentSprite != sr.sprite);
+            currentSprite = sr.sprite;
+            sr.material.SetTexture("_Texture", currentSprite.texture);
         }
     }
 }
