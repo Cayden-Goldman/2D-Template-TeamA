@@ -1077,9 +1077,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 1463823865}
-  Blue: {r: 0.051041294, g: 0.051041294, b: 0.3490566, a: 1}
-  Purple: {r: 0.41142547, g: 0.08009967, b: 0.6792453, a: 1}
-  Gray: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+  Blue: {r: 0.13725491, g: 0.11764706, b: 0.32941177, a: 1}
+  Purple: {r: 0.29803923, g: 0, b: 0.7254902, a: 1}
+  Gray: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
 --- !u!1 &2021984412
 GameObject:
   m_ObjectHideFlags: 0
