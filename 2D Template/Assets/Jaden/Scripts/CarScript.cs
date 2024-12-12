@@ -10,11 +10,10 @@ public class CarScript : MonoBehaviour
     public GameObject ooooo;
     public List<Vector3> ooooo2;
     public bool vertical;
+    public float min, max;
     public void Start()
     {
-        for(int i = 0; i < ooooo.transform.childCount; i++)
-            if (ooooo.transform.GetChild(i) != this)
-                ooooo2.Add(ooooo.transform.GetChild(i).position);
+        Oooooo();
     }
     public void Update()
     {
@@ -23,22 +22,32 @@ public class CarScript : MonoBehaviour
     }
     public void OnMouseDrag()
     {
-
+        Oooooo();
         if (vertical)
         {
-            float max, min;
+            max = 2.5f;
+            min = -3.5f;
             foreach(Vector3 t in ooooo2)
             {
-                if(t.x == transform.transform.transform.transform.transform.transform.position.x)
+                if(t.x == transform.position.x)
                 {
-                    if (t.y > transform.transform.transform.position.y)
-                    {
-                       MaybeNullWhenAttribute nullWhenAttribute = null; 
-                    }
+                    if (t.y > transform.position.y && t.y < max) max = t.y - 1;
+                    else if(t.y < transform.position.y && t.y > min) min = t.y + 1;
                 }
             }
+                transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).y + .5f) - .5f, min, max), transform.position.z);
         }
         else
-        transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).x + .5f) - .5f , transform.position.y, transform.position.z);
+        {
+            transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).x + .5f) - .5f , transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 5.5f), transform.position.y, transform.position.z);
+        }
+    }
+    public void Oooooo()
+    {
+        ooooo2.Clear();
+        for (int i = 0; i < ooooo.transform.childCount; i++)
+            if (ooooo.transform.GetChild(i) != this)
+                ooooo2.Add(ooooo.transform.GetChild(i).position);
     }
 }

@@ -60,5 +60,6 @@ public class Lever : Interactable
     public override void Interact()
     {
         LeverEvent.evennt.Invoke();
+        
     }
 }
