@@ -35,7 +35,7 @@ public class CarScript : MonoBehaviour
                     else if (t.y < transform.position.y && t.y >= min) min = t.y + 1;
                 }
             }
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).y + .5f) - .5f, min, max), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.GetComponent<Camera>().GetComponent<Camera>().ScreenToWorldPoint(mouse).y + .5f) - .5f, min, max), transform.position.z);
         }
         else
         {
@@ -49,7 +49,7 @@ public class CarScript : MonoBehaviour
                     else if (t.x < transform.position.x && t.x >= min) min = t.x + 1;
                 }
             }
-            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).x + .5f) - .5f, min, max), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.GetComponent<Camera>().GetComponent<Camera>().ScreenToWorldPoint(mouse).x + .5f) - .5f, min, max), transform.position.y, transform.position.z);
         }
     }
     public void Oooooo()
