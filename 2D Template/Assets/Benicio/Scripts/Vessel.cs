@@ -21,6 +21,7 @@ public class Vessel : MonoBehaviour
     SpriteRenderer sr;
     Animator animator;
     int directionDown = -1;
+    bool updatingShader;
 
     void Start()
     {
@@ -28,7 +29,6 @@ public class Vessel : MonoBehaviour
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        SetShader();
     }
 
     void Update()
@@ -57,6 +57,8 @@ public class Vessel : MonoBehaviour
                 animator.SetInteger("Direction", directionDown);
                 directionDown = -1;
             }
+            if (!updatingShader)
+                SetShader();
         }
         else if (moving)
         {
@@ -138,6 +140,7 @@ public class Vessel : MonoBehaviour
 
     IEnumerator UpdateShader()
     {
+        updatingShader = true;
         while (true)
         {
             yield return new WaitUntil(() => currentSprite != sr.sprite);
@@ -149,6 +152,7 @@ public class Vessel : MonoBehaviour
             else
                 break;
         }
+        updatingShader = false;
     }
 
     public void SetShader()
