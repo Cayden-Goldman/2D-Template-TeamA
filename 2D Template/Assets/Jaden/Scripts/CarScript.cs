@@ -27,20 +27,29 @@ public class CarScript : MonoBehaviour
         {
             max = 2.5f;
             min = -3.5f;
-            foreach(Vector3 t in ooooo2)
+            foreach (Vector3 t in ooooo2)
             {
-                if(t.x == transform.position.x)
+                if (t.x == transform.position.x)
                 {
-                    if (t.y > transform.position.y && t.y < max) max = t.y - 1;
-                    else if(t.y < transform.position.y && t.y > min) min = t.y + 1;
+                    if (t.y > transform.position.y && t.y <= max) max = t.y - 1;
+                    else if (t.y < transform.position.y && t.y >= min) min = t.y + 1;
                 }
             }
-                transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).y + .5f) - .5f, min, max), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).y + .5f) - .5f, min, max), transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).x + .5f) - .5f , transform.position.y, transform.position.z);
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 5.5f), transform.position.y, transform.position.z);
+            max = 5.5f;
+            min = -4.5f;
+            foreach (Vector3 t in ooooo2)
+            {
+                if (t.y == transform.position.y)
+                {
+                    if (t.x > transform.position.x && t.x <= max) max = t.x - 1;
+                    else if (t.x < transform.position.x && t.x >= min) min = t.x + 1;
+                }
+            }
+            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mouse).x + .5f) - .5f, min, max), transform.position.y, transform.position.z);
         }
     }
     public void Oooooo()
