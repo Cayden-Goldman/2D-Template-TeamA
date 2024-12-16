@@ -70,9 +70,6 @@
             "m_Id": "53080c964fac4f809a3cc0392b195bb8"
         },
         {
-            "m_Id": "fecd59de62684e8fbb9a63c64a79a9f2"
-        },
-        {
             "m_Id": "2847fcfde18e459cae85de1bb31182c7"
         },
         {
@@ -341,8 +338,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1311.0,
-            "y": 393.0
+            "x": 846.0,
+            "y": -232.9999542236328
         },
         "m_Blocks": [
             {
@@ -358,8 +355,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 1311.0,
-            "y": 564.0
+            "x": 846.0,
+            "y": -61.9999885559082
         },
         "m_Blocks": [
             {
@@ -850,18 +847,6 @@
         "m_SerializableColors": []
     },
     "m_OutputChannel": 0
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.GradientMaterialSlot",
-    "m_ObjectId": "28d45abcc8a94bf98538eb1337821c71",
-    "m_Id": 0,
-    "m_DisplayName": "Out",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3
 }
 
 {
@@ -1441,10 +1426,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 559.0,
-            "y": 342.0,
+            "x": 527.0000610351563,
+            "y": -61.9999885559082,
             "width": 208.0,
-            "height": 435.0
+            "height": 435.00006103515627
         }
     },
     "m_Slots": [
@@ -1668,10 +1653,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 435.0,
-            "y": 384.9999694824219,
-            "width": 124.0,
-            "height": 34.000030517578128
+            "x": 403.0000305175781,
+            "y": -17.999990463256837,
+            "width": 124.00003051757813,
+            "height": 34.00001525878906
         }
     },
     "m_Slots": [
@@ -2837,66 +2822,5 @@
         "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.GradientNode",
-    "m_ObjectId": "fecd59de62684e8fbb9a63c64a79a9f2",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Gradient",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 627.0,
-            "y": 2.0,
-            "width": 208.0,
-            "height": 104.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "28d45abcc8a94bf98538eb1337821c71"
-        }
-    ],
-    "synonyms": [
-        "ramp"
-    ],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Value": 0.0,
-    "m_SerializableColorKeys": [
-        {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 0.0
-        },
-        {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0,
-            "w": 1.0
-        }
-    ],
-    "m_SerializableAlphaKeys": [
-        {
-            "x": 1.0,
-            "y": 0.0
-        },
-        {
-            "x": 1.0,
-            "y": 1.0
-        }
-    ],
-    "m_SerializableMode": 0
 }
 
