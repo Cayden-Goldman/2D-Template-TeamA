@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class Ghost : MonoBehaviour
 {
     public static Vector2Int pos;
-    public static readonly List<string> passableTiles = new() { "baul" };
+    public static readonly List<string> passableTiles = new() { "baul", "CrateInner" };
 
     Tilemap walls;
     bool moving;
