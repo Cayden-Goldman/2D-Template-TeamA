@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Vessel : MonoBehaviour
 {
-    public static readonly Vector2Int[] directions = new Vector2Int[] { new(0, -1), new(-1, 0), new(0, 1), new(1, 0) };
+    public static readonly Vector2Int[] directions = new Vector2Int[] { new(0, -1), new(-1, 0), new(0, 1), new(1, 0), new() };
 
     public static Vector2Int pos;
     public static bool ghostMode;
