@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class CarScript : MonoBehaviour
 {
-    public static List<Vector3> objectPositions;
+    public static List<Vector3> objectPositions = new();
 
-    public Vector3 mouse;
     public bool vertical;
     public bool key;
-    public float min, max;
     public Material[] mats;
+    [Range(1, 4)]
+    public int length = 1;
 
+    Vector3 mouse;
     Transform parent;
     SpriteRenderer sr;
+    float min, max;
     bool clicking;
 
     public void Start()
@@ -22,7 +24,6 @@ public class CarScript : MonoBehaviour
         parent = transform.parent;
         sr = GetComponent<SpriteRenderer>();
         SetMat();
-        if (key) GetObjectPositions();
     }
 
     public void Update()
