@@ -5,22 +5,24 @@ using UnityEngine.UI;
 
 public class CarScript : MonoBehaviour
 {
+    public static List<Vector3> objectPositions;
+
     public Vector3 mouse;
-    public GameObject ooooo;
-    public List<Vector3> ooooo2;
     public bool vertical;
     public bool key;
     public float min, max;
     public Material[] mats;
 
+    Transform parent;
     SpriteRenderer sr;
     bool clicking;
 
     public void Start()
     {
+        parent = transform.parent;
         sr = GetComponent<SpriteRenderer>();
         SetMat();
-        Oooooo();
+        if (key) GetObjectPositions();
     }
 
     public void Update()
@@ -30,7 +32,7 @@ public class CarScript : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        Oooooo();
+        GetObjectPositions();
         if (!clicking)
         {
             SetMat(true);
@@ -40,7 +42,7 @@ public class CarScript : MonoBehaviour
         {
             max = 2.5f;
             min = -3.5f;
-            foreach (Vector3 t in ooooo2)
+            foreach (Vector3 t in objectPositions)
             {
                 if (t.x == transform.position.x)
                 {
@@ -54,7 +56,8 @@ public class CarScript : MonoBehaviour
         {
             max = 5.5f;
             min = -4.5f;
-            foreach (Vector3 t in ooooo2)
+            if (key) max = 7.5f;
+            foreach (Vector3 t in objectPositions)
             {
                 if (t.y == transform.position.y)
                 {
@@ -72,12 +75,12 @@ public class CarScript : MonoBehaviour
         SetMat();
     }
 
-    public void Oooooo()
+    public void GetObjectPositions()
     {
-        ooooo2.Clear();
-        for (int i = 0; i < ooooo.transform.childCount; i++)
-            if (ooooo.transform.GetChild(i) != this)
-                ooooo2.Add(ooooo.transform.GetChild(i).position);
+        objectPositions.Clear();
+        for (int i = 0; i < parent.childCount; i++)
+            if (parent.GetChild(i) != this)
+                objectPositions.Add(parent.GetChild(i).position);
     }
 
     void SetMat(bool clicking = false)
