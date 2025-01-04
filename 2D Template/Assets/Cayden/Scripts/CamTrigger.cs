@@ -25,4 +25,12 @@ public class CamTrigger : MonoBehaviour
                 
         }
     }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.transform.position.y < transform.position.y)
+            camFollow.transform.position = new Vector3(0, 0, -10);
+        else if (collision.gameObject.transform.position.y > transform.position.y)
+            camFollow.transform.position = new Vector3(0, 11, -10);
+    }
 }
