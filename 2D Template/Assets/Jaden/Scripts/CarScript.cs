@@ -10,33 +10,30 @@ public class CarScript : MonoBehaviour
     public bool vertical;
     public bool key;
     public Material[] mats;
-    [Range(1, 4)]
-    public int length = 1;
+    [Range(1, 4)] public int length = 1;
+    [HideInInspector] float halfDistance;
 
-    Vector3 mouse;
+    Vector3 mousePos;
     Transform parent;
-    SpriteRenderer sr;
     float min, max;
+    float offset;
     bool clicking;
 
     public void Start()
     {
         parent = transform.parent;
-        sr = GetComponent<SpriteRenderer>();
         SetMat();
-    }
-
-    public void Update()
-    {
-        mouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, .1f);
+        offset = 0.5f - (length % 2) / 2f;
+        halfDistance = (length - 1) / 2f;
     }
 
     public void OnMouseDrag()
     {
-        GetObjectPositions();
+        mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, .1f);
         if (!clicking)
         {
             SetMat(true);
+            GetObjectPositions();
         }
         clicking = true;
         if (vertical)
@@ -51,7 +48,9 @@ public class CarScript : MonoBehaviour
                     else if (t.y < transform.position.y && t.y >= min) min = t.y + 1;
                 }
             }
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.GetComponent<Camera>().GetComponent<Camera>().ScreenToWorldPoint(mouse).y + .5f) - .5f, min, max), transform.position.z);
+            max -= offset;
+            min += offset;
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - offset, min, max), transform.position.z);
         }
         else
         {
@@ -66,7 +65,9 @@ public class CarScript : MonoBehaviour
                     else if (t.x < transform.position.x && t.x >= min) min = t.x + 1;
                 }
             }
-            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.GetComponent<Camera>().GetComponent<Camera>().ScreenToWorldPoint(mouse).x + .5f) - .5f, min, max), transform.position.y, transform.position.z);
+            max -= offset;
+            min += offset;
+            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - offset, min, max), transform.position.y, transform.position.z);
         }
     }
 
@@ -80,12 +81,29 @@ public class CarScript : MonoBehaviour
     {
         objectPositions.Clear();
         for (int i = 0; i < parent.childCount; i++)
-            if (parent.GetChild(i) != this)
-                objectPositions.Add(parent.GetChild(i).position);
+        {
+            Transform child = parent.GetChild(i);
+            if (child != transform)
+            {
+                CarScript childScript = child.GetComponent<CarScript>();
+                Vector2 basePos = new Vector2(Mathf.Floor(child.position.x), Mathf.Floor(child.position.y));
+                Vector2 dirVector;
+                if (childScript.vertical) dirVector = Vector2.up;
+                else dirVector = Vector2.right;
+                if (childScript.length == 1) objectPositions.Add(basePos + new Vector2(0.5f, 0.5f));
+                else
+                {
+                    Vector2 startPos = basePos - dirVector * Mathf.FloorToInt(childScript.halfDistance);
+                    for (int t = 0; t < childScript.length; t++)
+                        objectPositions.Add(startPos + dirVector * t + new Vector2(0.5f, 0.5f));
+                }
+            }
+        }
     }
 
     void SetMat(bool clicking = false)
     {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (clicking)
         {
             if (key)
@@ -104,5 +122,12 @@ public class CarScript : MonoBehaviour
             else
                 sr.material = mats[1];
         }    
+    }
+
+    public void OnValidate()
+    {
+        if (vertical) transform.localScale = new(1, length);
+        else transform.localScale = new(length, 1);
+        SetMat();
     }
 }
