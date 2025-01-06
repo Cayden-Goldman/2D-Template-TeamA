@@ -22,9 +22,14 @@ public class LeverEvent : MonoBehaviour
     }
     public void OpenDoor()
     {
-        if(aktiv)
-            ButtonPress.Door(door, walls, tilePositions, invisibleTile, aktiv = !aktiv);
-        else
-            ButtonPress.Door(door, walls, tilePositions, null, aktiv = !aktiv);
+        
+        if(Mathf.Abs(Vector2.Distance(Vessel.pos, transform.position)) <= 2 && !Vessel.ghostMode|| Mathf.Abs(Vector2.Distance(Ghost.pos, transform.position)) <= 2 && Vessel.ghostMode)
+        {
+            if(aktiv)
+                ButtonPress.Door(door, walls, tilePositions, invisibleTile, aktiv = !aktiv);
+            else
+                ButtonPress.Door(door, walls, tilePositions, null, aktiv = !aktiv);
+        }
+        
     }
 }
