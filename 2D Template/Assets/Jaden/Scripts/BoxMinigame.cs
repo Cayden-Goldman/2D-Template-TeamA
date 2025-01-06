@@ -18,4 +18,11 @@ public class BoxMinigame : MonoBehaviour
         text.SetActive(false);   
         boxGame.SetActive(true);
     }
+    public void MinigameEnd()
+    {
+        player.GetComponent<Vessel>().enabled = true;
+        collidables.SetActive(true);
+        boxGame.SetActive(false);
+        
+    }
 }

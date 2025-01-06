@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,6 +75,14 @@ public class CarScript : MonoBehaviour
                 {
                     if (t.x > transform.position.x && t.x <= max) max = t.x - 1;
                     else if (t.x < transform.position.x && t.x >= min) min = t.x + 1;
+                }
+            }
+            if(key)
+            {
+                if(transform.position.x == 7)
+                {
+                    GameObject gameObject = GameObject.Find("Crate");
+                    gameObject.GetComponent<BoxMinigame>().MinigameEnd();
                 }
             }
             max -= offset + sizeOffset;
