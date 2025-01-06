@@ -23,6 +23,5 @@ public class BoxMinigame : MonoBehaviour
         player.GetComponent<Vessel>().enabled = true;
         collidables.SetActive(true);
         boxGame.SetActive(false);
-        
     }
 }
