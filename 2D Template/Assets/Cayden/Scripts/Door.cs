@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
-public class Key : MonoBehaviour
+public class Door : MonoBehaviour
 {
-    public static UnityEvent evenn = new();
+    public static UnityEvent evetn = new();
     public GameObject player;
     public Vector2Int[] tilePositions;
     public TileBase invisibleTile;
@@ -14,14 +14,16 @@ public class Key : MonoBehaviour
     Tilemap walls;
     void Start()
     {
-        evenn.AddListener(GrabKey);
+        evetn.AddListener(Open);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         foreach (Vector2Int pos in tilePositions)
             walls.SetTile((Vector3Int)pos, invisibleTile);
     }
-    public void GrabKey()
+    public void Open()
     {
-        player.GetComponent<Vessel>().hasKey = true;
-        Destroy(gameObject);
+        if(player.GetComponent<Vessel>().hasKey)
+        {
+            Destroy(gameObject);
+        }
     }
 }

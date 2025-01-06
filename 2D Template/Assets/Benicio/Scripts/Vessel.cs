@@ -10,6 +10,7 @@ public class Vessel : MonoBehaviour
 
     public static Vector2Int pos;
     public static bool ghostMode;
+    public bool hasKey;
 
     public GameObject ghostObj;
     public GameObject interactText;

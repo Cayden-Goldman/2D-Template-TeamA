@@ -10,7 +10,8 @@ public class Interactables : MonoBehaviour
     public enum Objects { 
     boxGame,
     lever,
-    lung };
+    lung,
+    mind};
 
     public Objects obj;
 
@@ -24,6 +25,12 @@ public class Interactables : MonoBehaviour
                 break;
             case (Objects)1:
                 interactables.Add(new Lever("Pull", true));
+                break;
+            case (Objects)2:
+                interactables.Add(new Lever("Take", true));
+                break;
+            case (Objects)3:
+                interactables.Add(new Lever("Door", true));
                 break;
         }
     }
@@ -60,5 +67,30 @@ public class Lever : Interactable
     public override void Interact()
     {
         LeverEvent.evennt.Invoke();
+    }
+}
+public class TheKey : Interactable
+{
+
+    public TheKey(string text, bool ghostOnly = false)
+    {
+        this.text = text;
+    }
+
+    public override void Interact()
+    {
+        Key.evenn.Invoke();
+    }
+}
+public class Door1 : Interactable
+{
+    public Door1(string text, bool ghostOnly = false)
+    {
+        this.text = text;
+    }
+
+    public override void Interact()
+    {
+        
     }
 }
