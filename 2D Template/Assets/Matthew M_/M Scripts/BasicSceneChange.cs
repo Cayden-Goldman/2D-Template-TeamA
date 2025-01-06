@@ -6,10 +6,22 @@ using UnityEngine.SceneManagement;
 public class BasicSceneChange : MonoBehaviour
 {
     public string scenename;
-    
-    public void ChangeScene(string sceneName)
+    public GameObject Image;
+    public float WaitTime;
+
+    public void Awake()
     {
-        SceneManager.LoadScene(sceneName);
+        Image.SetActive(false);
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(scenename);
+    }
+    public void UniqueExit()
+    {
+        Invoke("ChangeScene", WaitTime);
+        Image.SetActive(true);
     }
 
     public void End()
