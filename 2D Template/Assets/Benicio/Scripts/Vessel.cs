@@ -10,12 +10,12 @@ public class Vessel : MonoBehaviour
 
     public static Vector2Int pos;
     public static bool ghostMode;
-    public bool hasKey;
 
     public GameObject ghostObj;
     public GameObject interactText;
     public Material possessMat;
     public Material defaultMat;
+    [HideInInspector] public bool hasKey;
 
     Tilemap walls;
     bool moving;
@@ -24,6 +24,7 @@ public class Vessel : MonoBehaviour
     Animator animator;
     int directionDown = -1;
     bool updatingShader;
+    float ghostTimer;
 
     void Start()
     {
@@ -50,6 +51,7 @@ public class Vessel : MonoBehaviour
                 ghostMode = true;
                 sr.material = defaultMat;
                 Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
+                StartCoroutine(GhostTimer());
             }
             else
                 animator.SetBool("IsWalking", false);
@@ -120,11 +122,7 @@ public class Vessel : MonoBehaviour
                     Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
                     if (!interactable.ghostOnly)
                     {
-                        interactText.GetComponent<TextMeshPro>().text = interactable.text;
-                        foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
-                            outline.text = interactable.text;
-                        interactText.transform.localPosition = new Vector2(0.5f, 1) + directions[i];
-                        interactText.SetActive(true);
+                        SetText(interactable.text, new Vector2(0.5f, 1) + directions[i]);
                         while (!moving)
                         {
                             yield return null;
@@ -161,5 +159,29 @@ public class Vessel : MonoBehaviour
     {
         sr.material = possessMat;
         StartCoroutine(UpdateShader());
+    }
+
+    void SetText(string text, Vector2 pos)
+    {
+        interactText.GetComponent<TextMeshPro>().text = text;
+        foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
+            outline.text = text;
+        interactText.transform.localPosition = pos;
+        interactText.SetActive(true);
+    }
+
+    IEnumerator GhostTimer()
+    {
+        ghostTimer = 15;
+        while (ghostMode)
+        {
+            if (ghostTimer > 0)
+            {
+                ghostTimer -= Time.deltaTime;
+                SetText(Mathf.CeilToInt(ghostTimer) + "", new(0.5f, 1));
+            }
+            yield return null;
+        }
+        interactText.SetActive(false);
     }
 }
