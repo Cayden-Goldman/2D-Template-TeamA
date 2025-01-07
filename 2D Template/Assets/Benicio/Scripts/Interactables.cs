@@ -27,10 +27,10 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new Lever("Pull", true));
                 break;
             case (Objects)2:
-                interactables.Add(new Lever("Take", true));
+                interactables.Add(new Lung("Take", true));
                 break;
             case (Objects)3:
-                interactables.Add(new Lever("Door", true));
+                interactables.Add(new Mind("Door", true));
                 break;
         }
     }
@@ -69,10 +69,10 @@ public class Lever : Interactable
         LeverEvent.evennt.Invoke();
     }
 }
-public class TheKey : Interactable
+public class Lung : Interactable
 {
 
-    public TheKey(string text, bool ghostOnly = false)
+    public Lung(string text, bool ghostOnly = false)
     {
         this.text = text;
     }
@@ -82,15 +82,15 @@ public class TheKey : Interactable
         Key.evenn.Invoke();
     }
 }
-public class Door1 : Interactable
+public class Mind : Interactable
 {
-    public Door1(string text, bool ghostOnly = false)
+    public Mind(string text, bool ghostOnly = false)
     {
         this.text = text;
     }
 
     public override void Interact()
     {
-        
+        Door.evetn.Invoke();
     }
 }
