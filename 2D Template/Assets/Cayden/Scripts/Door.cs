@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
@@ -21,9 +23,12 @@ public class Door : MonoBehaviour
     }
     public void Open()
     {
+        foreach (Vector2Int pos in tilePositions)
+            Interactables.positions.Remove(pos);
+        Interactables.interactables.Remove(new Mind("Door", true));
         if(player.GetComponent<Vessel>().hasKey)
         {
-            Destroy(gameObject);
+            ButtonPress.Door(gameObject, walls, tilePositions, null, true);
         }
     }
 }

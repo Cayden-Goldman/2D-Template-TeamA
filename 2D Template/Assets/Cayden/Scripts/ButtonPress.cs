@@ -37,8 +37,8 @@ public class ButtonPress : MonoBehaviour
 
     public static void Door(GameObject door, Tilemap tilemap, Vector2Int[] tiles, TileBase tile, bool open)
     {
-        door.SetActive(!open);
         foreach (Vector2Int pos in tiles)
             tilemap.SetTile((Vector3Int)pos, tile);
+        door.SetActive(!open);
     }
 }
