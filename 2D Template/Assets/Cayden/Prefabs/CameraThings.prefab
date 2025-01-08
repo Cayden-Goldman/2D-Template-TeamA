@@ -44,6 +44,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570355949039998808}
+  - component: {fileID: 1684211077217536271}
   m_Layer: 0
   m_Name: CamFollow
   m_TagString: Untagged
@@ -66,6 +67,19 @@ Transform:
   m_Father: {fileID: 570355948407312102}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684211077217536271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570355949039998811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e2b74b576a835408b9af8168c7b611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 558184851722695378, guid: 7d168b7fd652c2f46a4dd0e47f20b3dd, type: 3}
 --- !u!1 &570355949399763476
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +204,7 @@ MonoBehaviour:
   m_Follow: {fileID: 570355949039998808}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 5.625
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -261,15 +275,15 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.13906251
     y: 0
-    width: 1
-    height: 1
+    width: 0.33796299
+    height: 0.33796296
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
