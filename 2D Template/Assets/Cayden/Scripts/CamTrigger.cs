@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamTrigger : MonoBehaviour
 {
     public GameObject camFollow;
+    public ParalaxThing thing;
     bool up = false;
 
     public void OnTriggerEnter2D(Collider2D collider)
@@ -13,16 +14,17 @@ public class CamTrigger : MonoBehaviour
         {
             switch(up)
             {
-                case true: 
+                case true:
+                    thing.ogCamPos.y -= 14;
                     camFollow.transform.position = new Vector3(0, 0, -10); 
                     up = false; 
                     break;
                 case false:
-                    camFollow.transform.position = new Vector3(0, 11, -10);
+                    thing.ogCamPos.y += 14;
+                    camFollow.transform.position = new Vector3(0, 14, -10);
                     up = true;
                     break;
             }
-                
         }
     }
 

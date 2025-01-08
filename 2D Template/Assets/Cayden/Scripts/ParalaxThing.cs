@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParalaxThing : MonoBehaviour
 {
     public GameObject player;
-    Vector3 ogCamPos;
+    public Vector3 ogCamPos;
     Vector3 position;
     private void Start()
     {
