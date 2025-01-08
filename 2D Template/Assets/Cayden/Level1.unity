@@ -10532,9 +10532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 845712498}
   tilePositions:
-  - {x: -1, y: 20}
   - {x: -1, y: 19}
-  - {x: 0, y: 20}
   - {x: 0, y: 19}
   invisibleTile: {fileID: 0}
 --- !u!1001 &982164792
