@@ -172,6 +172,7 @@ public class Vessel : MonoBehaviour
 
     IEnumerator GhostTimer()
     {
+        TextMeshPro text = interactText.GetComponent<TextMeshPro>();
         ghostTimer = 15;
         while (ghostMode)
         {
@@ -179,6 +180,10 @@ public class Vessel : MonoBehaviour
             {
                 ghostTimer -= Time.deltaTime;
                 SetText(Mathf.CeilToInt(ghostTimer) + "", new(0.5f, 1));
+                if (ghostTimer < 3)
+                {
+                    text.color = Color.red + Color.cyan * Mathf.CeilToInt(Mathf.Sin(Time.time * 10));
+                }
             }
             yield return null;
         }

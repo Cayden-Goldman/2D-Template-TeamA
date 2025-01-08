@@ -16,6 +16,7 @@ public class Ghost : MonoBehaviour
     Sprite currentSprite;
     SpriteRenderer sr;
     Animator animator;
+    int directionDown = -1;
 
     void Start()
     {
@@ -30,18 +31,26 @@ public class Ghost : MonoBehaviour
     {
         if (!moving)
         {
-            if (Input.GetKey(KeyCode.A))
-                StartCoroutine(Move(new(-1, 0)));
-            else if (Input.GetKey(KeyCode.D))
-                StartCoroutine(Move(new(1, 0)));
+            if (Input.GetKey(KeyCode.S))
+                directionDown = 0;
+            else if (Input.GetKey(KeyCode.A))
+                directionDown = 1;
             else if (Input.GetKey(KeyCode.W))
-                StartCoroutine(Move(new(0, 1)));
-            else if (Input.GetKey(KeyCode.S))
-                StartCoroutine(Move(new(0, -1)));
+                directionDown = 2;
+            else if (Input.GetKey(KeyCode.D))
+                directionDown = 3;
             else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
             {
                 Vessel.ghostMode = false;
                 Destroy(gameObject);
+            }
+            else
+                animator.SetBool("IsWalking", false);
+            if (directionDown > -1)
+            {
+                StartCoroutine(Move(Vessel.directions[directionDown]));
+                animator.SetInteger("Direction", directionDown);
+                directionDown = -1;
             }
         }
     }
@@ -58,6 +67,7 @@ public class Ghost : MonoBehaviour
         {
             interactText.SetActive(false);
             moving = true;
+            animator.SetBool("IsWalking", true);
             Vector2Int startPos = pos;
             pos += delta;
             for (float t = 0; t < 1; t += Time.deltaTime * 6)
