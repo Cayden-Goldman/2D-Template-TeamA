@@ -10,6 +10,7 @@ public class Vessel : MonoBehaviour
 
     public static Vector2Int pos;
     public static bool ghostMode;
+    public static bool canMove = true;
 
     public GameObject ghostObj;
     public GameObject interactText;
@@ -36,7 +37,7 @@ public class Vessel : MonoBehaviour
 
     void Update()
     {
-        if (!moving && !ghostMode)
+        if (!moving && !ghostMode && canMove)
         {
             if (Input.GetKey(KeyCode.S))
                 directionDown = 0;

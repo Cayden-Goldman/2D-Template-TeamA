@@ -277,6 +277,7 @@ MonoBehaviour:
   interactText: {fileID: 1508101416662844269}
   possessMat: {fileID: 2100000, guid: 3453a68942d695240ad9b9d015319aa8, type: 2}
   defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  hasKey: 0
 --- !u!95 &3909925255455876029
 Animator:
   serializedVersion: 4

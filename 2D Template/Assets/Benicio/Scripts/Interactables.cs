@@ -10,8 +10,9 @@ public class Interactables : MonoBehaviour
     public enum Objects { 
     boxGame,
     lever,
-    lung,
-    mind};
+    key,
+    lockedDoor,
+    npc};
 
     public Objects obj;
 
@@ -24,13 +25,16 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new CrateGame("Search", true));
                 break;
             case (Objects)1:
-                interactables.Add(new Lever("Pull", true));
+                interactables.Add(new Lever("Pull"));
                 break;
             case (Objects)2:
-                interactables.Add(new Lung("Take", true));
+                interactables.Add(new KeyItem("Take"));
                 break;
             case (Objects)3:
-                interactables.Add(new Mind("Door", true));
+                interactables.Add(new LockedDoor("Unlock"));
+                break;
+            case (Objects)4:
+                interactables.Add(new Guard("Talk", gameObject));
                 break;
         }
     }
@@ -40,6 +44,7 @@ public abstract class Interactable
 {
     public string text;
     public bool ghostOnly;
+    public GameObject obj;
     public abstract void Interact();
 }
 
@@ -48,6 +53,7 @@ public class CrateGame : Interactable
     public CrateGame(string text, bool ghostOnly = false)
     {
         this.text = text;
+        this.ghostOnly = ghostOnly;
     }
 
     public override void Interact()
@@ -58,10 +64,10 @@ public class CrateGame : Interactable
 
 public class Lever : Interactable
 {
-    
     public Lever(string text, bool ghostOnly = false)
     {
         this.text = text;
+        this.ghostOnly = ghostOnly;
     }
 
     public override void Interact()
@@ -69,12 +75,13 @@ public class Lever : Interactable
         LeverEvent.evennt.Invoke();
     }
 }
-public class Lung : Interactable
-{
 
-    public Lung(string text, bool ghostOnly = false)
+public class KeyItem : Interactable
+{
+    public KeyItem(string text, bool ghostOnly = false)
     {
         this.text = text;
+        this.ghostOnly = ghostOnly;
     }
 
     public override void Interact()
@@ -82,15 +89,32 @@ public class Lung : Interactable
         Key.evenn.Invoke();
     }
 }
-public class Mind : Interactable
+
+public class LockedDoor : Interactable
 {
-    public Mind(string text, bool ghostOnly = false)
+    public LockedDoor(string text, bool ghostOnly = false)
     {
         this.text = text;
+        this.ghostOnly = ghostOnly;
     }
 
     public override void Interact()
     {
         Door.evetn.Invoke();
+    }
+}
+
+public class Guard : Interactable
+{
+    public Guard(string text, GameObject obj, bool ghostOnly = false)
+    {
+        this.text = text;
+        this.obj = obj;
+        this.ghostOnly = ghostOnly;
+    }
+
+    public override void Interact()
+    {
+        obj.GetComponent<Npc>().Interact();
     }
 }

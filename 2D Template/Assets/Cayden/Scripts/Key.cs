@@ -26,7 +26,7 @@ public class Key : MonoBehaviour
         Console.WriteLine("stinky");
         player.GetComponent<Vessel>().hasKey = true;
         Interactables.positions.Remove(new Vector2Int(MathF.Round(transform.position.x).ConvertTo<int>(), MathF.Round(transform.position.x).ConvertTo<int>()));
-        Interactables.interactables.Remove(new Lung("Take", true));
+        Interactables.interactables.Remove(new KeyItem("Take", true));
         Destroy(gameObject);
     }
 }

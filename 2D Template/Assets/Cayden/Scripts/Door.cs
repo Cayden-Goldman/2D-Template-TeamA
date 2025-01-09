@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
     {
         foreach (Vector2Int pos in tilePositions)
             Interactables.positions.Remove(pos);
-        Interactables.interactables.Remove(new Mind("Door", true));
+        Interactables.interactables.Remove(new LockedDoor("Door", true));
         if(player.GetComponent<Vessel>().hasKey)
         {
             ButtonPress.Door(gameObject, walls, tilePositions, null, true);
