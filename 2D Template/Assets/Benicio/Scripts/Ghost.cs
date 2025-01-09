@@ -81,23 +81,20 @@ public class Ghost : MonoBehaviour
                 if (Interactables.positions.Contains(pos + Vessel.directions[i]))
                 {
                     Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + Vessel.directions[i])];
-                    if (!interactable.ghostOnly)
+                    interactText.GetComponent<TextMeshPro>().text = interactable.text;
+                    foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
+                        outline.text = interactable.text;
+                    interactText.transform.localPosition = new Vector2(0.5f, 1) + Vessel.directions[i];
+                    interactText.SetActive(true);
+                    while (!moving)
                     {
-                        interactText.GetComponent<TextMeshPro>().text = interactable.text;
-                        foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
-                            outline.text = interactable.text;
-                        interactText.transform.localPosition = new Vector2(0.5f, 1) + Vessel.directions[i];
-                        interactText.SetActive(true);
-                        while (!moving)
+                        yield return null;
+                        if (Input.GetKeyDown(KeyCode.E))
                         {
-                            yield return null;
-                            if (Input.GetKeyDown(KeyCode.E))
-                            {
-                                interactable.Interact();
-                            }
+                            interactable.Interact();
                         }
-                        break;
                     }
+                    break;
                 }
             }
         }
