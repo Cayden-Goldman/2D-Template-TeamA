@@ -110,7 +110,7 @@ public class CarScript : MonoBehaviour
                 Vector2 dirVector;
                 if (childScript.vertical) dirVector = Vector2.up;
                 else dirVector = Vector2.right;
-                if (childScript.length == 1) objectPositions.Add(basePos + new Vector2(0.5f, 0.5f));
+                if (childScript.length == 1) objectPositions.Add(basePos);
                 else
                 {
                     Vector2 startPos = basePos - dirVector * childScript.halfDistance;
