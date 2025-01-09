@@ -58,7 +58,6 @@ public class CrateGame : Interactable
 
     public override void Interact()
     {
-        Debug.Log(Time.time);
         BoxMinigame.evnt.Invoke();
     }
 }

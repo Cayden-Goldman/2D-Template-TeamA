@@ -11,7 +11,9 @@ public class CarScript : MonoBehaviour
     public enum Objects
     {
         boxBoye,
-        key
+        key,
+        goldBar,
+        goldBarL3
     };
 
     public Objects obj;
@@ -172,6 +174,18 @@ public class CarScript : MonoBehaviour
                 vertical = false;
                 key = true;
                 length = 2;
+                break;
+            case Objects.goldBar:
+                sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBar");
+                vertical = true;
+                key = false;
+                length = 2;
+                break;
+            case Objects.goldBarL3:
+                sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBarL3");
+                vertical = true;
+                key = false;
+                length = 3;
                 break;
         }
     }
