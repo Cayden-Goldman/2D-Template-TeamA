@@ -13,7 +13,8 @@ public class CarScript : MonoBehaviour
     {
         boxBoye,
         key,
-        goldBarVertical
+        goldBarVertical,
+        coinVertical
     };
 
     public Objects obj;
@@ -178,6 +179,12 @@ public class CarScript : MonoBehaviour
             case Objects.goldBarVertical:
                 length = Mathf.Clamp(length, 2, 3);
                 sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBarVertical" + length);
+                vertical = true;
+                key = false;
+                break;
+            case Objects.coinVertical:
+                length = 1;
+                sr.sprite = Resources.Load<Sprite>("CrateGame/CoinVertical");
                 vertical = true;
                 key = false;
                 break;
