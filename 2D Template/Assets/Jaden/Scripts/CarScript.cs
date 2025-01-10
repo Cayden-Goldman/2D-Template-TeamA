@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +13,7 @@ public class CarScript : MonoBehaviour
     {
         boxBoye,
         key,
-        goldBar,
-        goldBarL3
+        goldBarVertical
     };
 
     public Objects obj;
@@ -175,17 +175,11 @@ public class CarScript : MonoBehaviour
                 key = true;
                 length = 2;
                 break;
-            case Objects.goldBar:
-                sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBar");
+            case Objects.goldBarVertical:
+                length = Mathf.Clamp(length, 2, 3);
+                sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBarVertical" + length);
                 vertical = true;
                 key = false;
-                length = 2;
-                break;
-            case Objects.goldBarL3:
-                sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBarL3");
-                vertical = true;
-                key = false;
-                length = 3;
                 break;
         }
     }

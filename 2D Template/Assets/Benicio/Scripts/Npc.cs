@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Npc : MonoBehaviour
 {
+    public enum Directions
+    {
+        up, right, down, left
+    }
+
     public string guardName;
     public string dialogue;
 

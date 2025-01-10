@@ -25,7 +25,7 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new CrateGame("Search", true));
                 break;
             case (Objects)1:
-                interactables.Add(new Lever("Pull"));
+                interactables.Add(new Lever("Pull", gameObject));
                 break;
             case (Objects)2:
                 interactables.Add(new KeyItem("Take"));
@@ -64,15 +64,16 @@ public class CrateGame : Interactable
 
 public class Lever : Interactable
 {
-    public Lever(string text, bool ghostOnly = false)
+    public Lever(string text, GameObject obj, bool ghostOnly = false)
     {
         this.text = text;
+        this.obj = obj;
         this.ghostOnly = ghostOnly;
     }
 
     public override void Interact()
     {
-        LeverEvent.evennt.Invoke();
+        obj.GetComponent<LeverEvent>().OpenDoor();
     }
 }
 
