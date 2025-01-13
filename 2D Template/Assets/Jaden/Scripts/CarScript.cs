@@ -14,7 +14,9 @@ public class CarScript : MonoBehaviour
         boxBoye,
         key,
         goldBarVertical,
-        coinVertical
+        coinVertical,
+        goldBarHorizontal,
+        coinHorizontal
     };
 
     public Objects obj;
@@ -57,15 +59,15 @@ public class CarScript : MonoBehaviour
             min = -3.5f;
             foreach (Vector3 t in objectPositions)
             {
-                if (t.x == transform.position.x)
+                if (t.x == transform.localPosition.x)
                 {
-                    if (t.y > transform.position.y && t.y <= max) max = t.y - 1;
-                    else if (t.y < transform.position.y && t.y >= min) min = t.y + 1;
+                    if (t.y > transform.localPosition.y && t.y <= max) max = t.y - 1;
+                    else if (t.y < transform.localPosition.y && t.y >= min) min = t.y + 1;
                 }
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.position.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.localPosition.z);
         }
         else
         {
@@ -74,15 +76,15 @@ public class CarScript : MonoBehaviour
             if (key) max = 7.5f;
             foreach (Vector3 t in objectPositions)
             {
-                if (t.y == transform.position.y)
+                if (t.y == transform.localPosition.y)
                 {
-                    if (t.x > transform.position.x && t.x <= max) max = t.x - 1;
-                    else if (t.x < transform.position.x && t.x >= min) min = t.x + 1;
+                    if (t.x > transform.localPosition.x && t.x <= max) max = t.x - 1;
+                    else if (t.x < transform.localPosition.x && t.x >= min) min = t.x + 1;
                 }
             }
             if(key)
             {
-                if(transform.position.x == 7)
+                if(transform.localPosition.x == 7)
                 {
                     GameObject gameObject = GameObject.Find("Crate");
                     gameObject.GetComponent<BoxMinigame>().MinigameEnd();
@@ -90,7 +92,7 @@ public class CarScript : MonoBehaviour
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.position.y, transform.position.z);
+            transform.localPosition = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.localPosition.y, transform.localPosition.z);
         }
     }
 
@@ -177,7 +179,7 @@ public class CarScript : MonoBehaviour
                 length = 2;
                 break;
             case Objects.goldBarVertical:
-                length = Mathf.Clamp(length, 2, 3);
+                length = Mathf.Clamp(length, 2, 4);
                 sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBarVertical" + length);
                 vertical = true;
                 key = false;
@@ -186,6 +188,18 @@ public class CarScript : MonoBehaviour
                 length = 1;
                 sr.sprite = Resources.Load<Sprite>("CrateGame/CoinVertical");
                 vertical = true;
+                key = false;
+                break;
+            case Objects.goldBarHorizontal:
+                length = Mathf.Clamp(length, 2, 4);
+                sr.sprite = Resources.Load<Sprite>("CrateGame/GoldBarHorizontal" + length);
+                vertical = false;
+                key = false;
+                break;
+            case Objects.coinHorizontal:
+                length = 1;
+                sr.sprite = Resources.Load<Sprite>("CrateGame/CoinHorizontal");
+                vertical = false;
                 key = false;
                 break;
         }
