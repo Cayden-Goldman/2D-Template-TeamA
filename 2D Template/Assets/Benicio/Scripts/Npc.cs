@@ -38,11 +38,11 @@ public class Npc : MonoBehaviour
     public void SetSightBounds()
     {
         Vector3Int startPos = new((int)transform.position.x, (int)transform.position.y);
-        for (int e = -3; e <= 3; e++)
+        for (int e = -4; e <= 4; e++)
         {
             for (int d = 1; d < 20; d++)
             {
-                Vector3Int pos = startPos + new Vector3Int(-d, Mathf.FloorToInt(d / 20f * e));
+                Vector3Int pos = startPos + new Vector3Int(-d, Mathf.RoundToInt(d / 20f * e));
                 if (walls.GetTile(pos) == null)
                     dangerTiles.SetTile(pos, dangerTile);
                 else break;

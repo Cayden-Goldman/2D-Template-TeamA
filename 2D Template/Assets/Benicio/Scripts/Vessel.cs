@@ -58,7 +58,6 @@ public class Vessel : MonoBehaviour
                 animator.SetBool("IsWalking", false);
             if (directionDown > -1)
             {
-                Debug.Log("ma");
                 StartCoroutine(Move(directions[directionDown]));
                 animator.SetInteger("Direction", directionDown);
                 directionDown = -1;
