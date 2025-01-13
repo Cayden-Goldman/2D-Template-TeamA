@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Interactables : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class Interactables : MonoBehaviour
     lever,
     key,
     lockedDoor,
-    npc};
+    npc,
+    brazier};
 
     public Objects obj;
 
@@ -35,6 +37,9 @@ public class Interactables : MonoBehaviour
                 break;
             case (Objects)4:
                 interactables.Add(new Guard("Talk", gameObject));
+                break;
+            case (Objects)5:
+                interactables.Add(new Brazier("Light", gameObject));
                 break;
         }
     }
@@ -117,5 +122,24 @@ public class Guard : Interactable
     public override void Interact()
     {
         obj.GetComponent<Npc>().Interact();
+    }
+}
+
+public class Brazier : Interactable
+{
+    public Brazier(string text, GameObject obj, bool ghostOnly = false)
+    {
+        this.text = text;
+        this.obj = obj;
+        this.ghostOnly = ghostOnly;
+    }
+    public override void Interact()
+    {
+        obj.GetComponentInChildren<Light2D>().enabled = !obj.GetComponentInChildren<Light2D>().enabled;
+        if(obj.GetComponentInChildren<Light2D>().enabled)
+            obj.GetComponentInChildren<ParticleSystem>().Play();
+        else
+            obj.GetComponentInChildren<ParticleSystem>().Stop();
+
     }
 }
