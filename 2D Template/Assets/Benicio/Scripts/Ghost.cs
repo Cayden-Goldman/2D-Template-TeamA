@@ -53,6 +53,17 @@ public class Ghost : MonoBehaviour
                 directionDown = -1;
             }
         }
+        else if (moving)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+                directionDown = 0;
+            else if (Input.GetKeyDown(KeyCode.A))
+                directionDown = 1;
+            else if (Input.GetKeyDown(KeyCode.W))
+                directionDown = 2;
+            else if (Input.GetKeyDown(KeyCode.D))
+                directionDown = 3;
+        }
     }
 
     IEnumerator Move(Vector2Int delta)
