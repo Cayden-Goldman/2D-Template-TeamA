@@ -67,7 +67,7 @@ public class CarScript : MonoBehaviour
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.localPosition.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.localPosition.z) - Camera.main.transform.position;
         }
         else
         {
@@ -92,7 +92,7 @@ public class CarScript : MonoBehaviour
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.localPosition = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.localPosition.y, transform.localPosition.z) - Camera.main.transform.position;
         }
     }
 
