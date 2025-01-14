@@ -7,6 +7,8 @@ public class CamTrigger : MonoBehaviour
     public GameObject camFollow;
     public ParalaxThing thing;
     bool up = false;
+    public Vector3 endPos;
+    public Vector3 startPos;
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
@@ -15,13 +17,13 @@ public class CamTrigger : MonoBehaviour
             switch(up)
             {
                 case true:
-                    thing.ogCamPos.y -= 14;
-                    camFollow.transform.position = new Vector3(0, 0, -10); 
+                    thing.ogCamPos.y -= endPos.y;
+                    camFollow.transform.position = startPos; 
                     up = false; 
                     break;
                 case false:
-                    thing.ogCamPos.y += 14;
-                    camFollow.transform.position = new Vector3(0, 14, -10);
+                    thing.ogCamPos.y += endPos.y;
+                    camFollow.transform.position = endPos;
                     up = true;
                     break;
             }
@@ -31,8 +33,8 @@ public class CamTrigger : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.transform.position.y < transform.position.y)
-            camFollow.transform.position = new Vector3(0, 0, -10);
+            camFollow.transform.position = startPos;
         else if (collision.gameObject.transform.position.y > transform.position.y)
-            camFollow.transform.position = new Vector3(0, 11, -10);
+            camFollow.transform.position = endPos;
     }
 }
