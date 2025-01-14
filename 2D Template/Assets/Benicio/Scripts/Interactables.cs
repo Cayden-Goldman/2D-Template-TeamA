@@ -135,11 +135,7 @@ public class Brazier : Interactable
     }
     public override void Interact()
     {
-        obj.GetComponentInChildren<Light2D>().enabled = !obj.GetComponentInChildren<Light2D>().enabled;
-        if(obj.GetComponentInChildren<Light2D>().enabled)
-            obj.GetComponentInChildren<ParticleSystem>().Play();
-        else
-            obj.GetComponentInChildren<ParticleSystem>().Stop();
+        obj.GetComponent<BrazierScript>().Light();
 
     }
 }

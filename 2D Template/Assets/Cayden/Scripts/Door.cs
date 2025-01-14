@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
         Interactables.interactables.Remove(new LockedDoor("Door", true));
         if(player.GetComponent<Vessel>().hasKey)
         {
-            ButtonPress.Door(gameObject, walls, tilePositions, null, true);
+            ButtonPress.Door(transform.GetChild(1).gameObject, walls, tilePositions, null, true);
         }
     }
 }

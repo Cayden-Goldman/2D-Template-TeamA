@@ -21,8 +21,14 @@ public class LeverEvent : MonoBehaviour
     public void OpenDoor()
     {
         if(aktiv)
+        {
             ButtonPress.Door(door, walls, tilePositions, invisibleTile, aktiv = !aktiv);
+            GetComponent<Animator>().SetBool("IsPulled", false);
+        }
         else
+        {
             ButtonPress.Door(door, walls, tilePositions, null, aktiv = !aktiv);
+            GetComponent<Animator>().SetBool("IsPulled", true);
+        }
     }
 }

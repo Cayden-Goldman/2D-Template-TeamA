@@ -22,7 +22,7 @@ public class ButtonPress : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
         {
-            GetComponent<SpriteRenderer>().color = Color.green;
+            GetComponent<Animator>().SetBool("IsPressed", true);
             Door(door, walls, tilePositions, null, true);
         }
     }
@@ -30,7 +30,7 @@ public class ButtonPress : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
         {
-            GetComponent<SpriteRenderer>().color = Color.red;
+            GetComponent<Animator>().SetBool("IsPressed", false);
             Door(door, walls, tilePositions, invisibleTile, false);
         }
     }
