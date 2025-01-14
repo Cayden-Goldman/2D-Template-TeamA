@@ -5051,6 +5051,7 @@ GameObject:
   - component: {fileID: 3825616181304832206}
   - component: {fileID: 3825616181304832177}
   - component: {fileID: 6376146896070036012}
+  - component: {fileID: 4902869038390546278}
   m_Layer: 0
   m_Name: Brazier
   m_TagString: Untagged
@@ -5141,3 +5142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: 5
+--- !u!114 &4902869038390546278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825616181304832176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e845f5fdc168a434aa34a9f695f49552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors: []
