@@ -30,6 +30,7 @@ public class Vessel : MonoBehaviour
 
     void Start()
     {
+        ghostMode = false;
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();

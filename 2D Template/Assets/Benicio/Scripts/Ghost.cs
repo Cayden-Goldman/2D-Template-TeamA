@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Ghost : MonoBehaviour
 {
@@ -91,6 +92,7 @@ public class Ghost : MonoBehaviour
             if (guardTiles.GetTile((Vector3Int)pos) != null)
             {
                 Debug.Log("Dead");
+                SceneManager.LoadScene("SampleScene");
             }
             for (int i = 0; i < 5; i++)
             {
