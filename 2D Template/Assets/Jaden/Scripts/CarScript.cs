@@ -59,15 +59,15 @@ public class CarScript : MonoBehaviour
             min = -3.5f;
             foreach (Vector3 t in objectPositions)
             {
-                if (t.x == transform.localPosition.x)
+                if (t.x == transform.position.x)
                 {
-                    if (t.y > transform.localPosition.y && t.y <= max) max = t.y - 1;
-                    else if (t.y < transform.localPosition.y && t.y >= min) min = t.y + 1;
+                    if (t.y > transform.position.y && t.y <= max) max = t.y - 1;
+                    else if (t.y < transform.position.y && t.y >= min) min = t.y + 1;
                 }
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.localPosition.z) - Camera.main.transform.position;
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.position.z);
         }
         else
         {
@@ -76,15 +76,15 @@ public class CarScript : MonoBehaviour
             if (key) max = 7.5f;
             foreach (Vector3 t in objectPositions)
             {
-                if (t.y == transform.localPosition.y)
+                if (t.y == transform.position.y)
                 {
-                    if (t.x > transform.localPosition.x && t.x <= max) max = t.x - 1;
-                    else if (t.x < transform.localPosition.x && t.x >= min) min = t.x + 1;
+                    if (t.x > transform.position.x && t.x <= max) max = t.x - 1;
+                    else if (t.x < transform.position.x && t.x >= min) min = t.x + 1;
                 }
             }
             if(key)
             {
-                if(transform.localPosition.x == 7)
+                if(transform.position.x == 7)
                 {
                     GameObject gameObject = GameObject.Find("Crate");
                     gameObject.GetComponent<BoxMinigame>().MinigameEnd();
@@ -92,7 +92,7 @@ public class CarScript : MonoBehaviour
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.localPosition = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.localPosition.y, transform.localPosition.z) - Camera.main.transform.position;
+            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.position.y, transform.position.z);
         }
     }
 
