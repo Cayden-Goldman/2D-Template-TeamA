@@ -9,17 +9,10 @@ public class BrazierScript : MonoBehaviour
     public GameObject[] doors;
     public void Light() 
     {
-        GetComponentInChildren<Light2D>().enabled = !GetComponentInChildren<Light2D>().enabled;
-        if (GetComponentInChildren<Light2D>().enabled)
-        {
-            GetComponentInChildren<ParticleSystem>().Play();
-            braziersLit++;
-        }
-        else
-        {
-            GetComponentInChildren<ParticleSystem>().Stop();
-            braziersLit--;
-        }
+        GetComponentInChildren<ParticleSystem>().Play();
+        GetComponentInChildren<Light2D>().enabled = true;
+        braziersLit++;
+        
         switch (braziersLit)
         {
             case 4:
