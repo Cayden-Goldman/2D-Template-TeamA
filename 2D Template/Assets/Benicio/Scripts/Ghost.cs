@@ -12,6 +12,7 @@ public class Ghost : MonoBehaviour
     public GameObject interactText;
 
     Tilemap walls;
+    Tilemap guardTiles;
     bool moving;
     Sprite currentSprite;
     SpriteRenderer sr;
@@ -22,6 +23,7 @@ public class Ghost : MonoBehaviour
     {
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
+        guardTiles = GameObject.Find("DangerTiles").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         StartCoroutine(UpdateShader());
@@ -76,7 +78,6 @@ public class Ghost : MonoBehaviour
             canMove = true;
         if (canMove)
         {
-            interactText.SetActive(false);
             moving = true;
             animator.SetBool("IsWalking", true);
             Vector2Int startPos = pos;
@@ -87,6 +88,10 @@ public class Ghost : MonoBehaviour
                 yield return null;
             }
             moving = false;
+            if (guardTiles.GetTile((Vector3Int)pos) != null)
+            {
+                Debug.Log("Dead");
+            }
             for (int i = 0; i < 5; i++)
             {
                 if (Interactables.positions.Contains(pos + Vessel.directions[i]))
@@ -105,6 +110,7 @@ public class Ghost : MonoBehaviour
                             interactable.Interact();
                         }
                     }
+                    interactText.SetActive(false);
                     break;
                 }
             }

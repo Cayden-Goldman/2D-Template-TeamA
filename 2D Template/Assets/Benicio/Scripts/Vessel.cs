@@ -26,6 +26,7 @@ public class Vessel : MonoBehaviour
     int directionDown = -1;
     bool updatingShader;
     float ghostTimer;
+    bool interactPending;
 
     void Start()
     {
@@ -83,7 +84,6 @@ public class Vessel : MonoBehaviour
         TileBase tile = walls.GetTile((Vector3Int)(pos + delta));
         if (tile == null)
         {
-            interactText.SetActive(false);
             if (Movable.positions.Contains(pos + delta))
             {
                 tile = walls.GetTile((Vector3Int)(pos + delta * 2));
@@ -118,12 +118,13 @@ public class Vessel : MonoBehaviour
             moving = false;
             for (int i = 0; i < 4; i++)
             {
-                if (Interactables.positions.Contains(pos + directions[i]))
+                if (!interactPending && Interactables.positions.Contains(pos + directions[i]))
                 {
                     Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
                     if (!interactable.ghostOnly)
                     {
                         SetText(interactable.text, new Vector2(0.5f, 1) + directions[i]);
+                        interactPending = true;
                         while (!moving)
                         {
                             yield return null;
@@ -132,6 +133,8 @@ public class Vessel : MonoBehaviour
                                 interactable.Interact();
                             }
                         }
+                        interactPending = false;
+                        interactText.SetActive(false);
                         break; 
                     }
                 }
