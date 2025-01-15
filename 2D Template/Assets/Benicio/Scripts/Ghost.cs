@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 public class Ghost : MonoBehaviour
 {
@@ -32,40 +33,43 @@ public class Ghost : MonoBehaviour
 
     void Update()
     {
-        if (!moving)
+        if (!Vessel.paused)
         {
-            if (Input.GetKey(KeyCode.S))
-                directionDown = 0;
-            else if (Input.GetKey(KeyCode.A))
-                directionDown = 1;
-            else if (Input.GetKey(KeyCode.W))
-                directionDown = 2;
-            else if (Input.GetKey(KeyCode.D))
-                directionDown = 3;
-            else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
+            if (!moving)
             {
-                Vessel.ghostMode = false;
-                Destroy(gameObject);
+                if (Input.GetKey(KeyCode.S))
+                    directionDown = 0;
+                else if (Input.GetKey(KeyCode.A))
+                    directionDown = 1;
+                else if (Input.GetKey(KeyCode.W))
+                    directionDown = 2;
+                else if (Input.GetKey(KeyCode.D))
+                    directionDown = 3;
+                else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
+                {
+                    Vessel.ghostMode = false;
+                    Destroy(gameObject);
+                }
+                else
+                    animator.SetBool("IsWalking", false);
+                if (directionDown > -1)
+                {
+                    StartCoroutine(Move(Vessel.directions[directionDown]));
+                    animator.SetInteger("Direction", directionDown);
+                    directionDown = -1;
+                }
             }
-            else
-                animator.SetBool("IsWalking", false);
-            if (directionDown > -1)
+            else if (moving)
             {
-                StartCoroutine(Move(Vessel.directions[directionDown]));
-                animator.SetInteger("Direction", directionDown);
-                directionDown = -1;
+                if (Input.GetKeyDown(KeyCode.S))
+                    directionDown = 0;
+                else if (Input.GetKeyDown(KeyCode.A))
+                    directionDown = 1;
+                else if (Input.GetKeyDown(KeyCode.W))
+                    directionDown = 2;
+                else if (Input.GetKeyDown(KeyCode.D))
+                    directionDown = 3;
             }
-        }
-        else if (moving)
-        {
-            if (Input.GetKeyDown(KeyCode.S))
-                directionDown = 0;
-            else if (Input.GetKeyDown(KeyCode.A))
-                directionDown = 1;
-            else if (Input.GetKeyDown(KeyCode.W))
-                directionDown = 2;
-            else if (Input.GetKeyDown(KeyCode.D))
-                directionDown = 3;
         }
     }
 
@@ -91,8 +95,7 @@ public class Ghost : MonoBehaviour
             moving = false;
             if (guardTiles.GetTile((Vector3Int)pos) != null)
             {
-                Debug.Log("Dead");
-                SceneManager.LoadScene("SampleScene");
+                UiManager.retry.Invoke();
             }
             for (int i = 0; i < 5; i++)
             {

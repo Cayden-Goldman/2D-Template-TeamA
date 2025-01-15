@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Vessel : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class Vessel : MonoBehaviour
     public static Vector2Int pos;
     public static bool ghostMode;
     public static bool canMove = true;
+    public static bool paused;
 
     public GameObject ghostObj;
     public GameObject interactText;
@@ -39,44 +40,64 @@ public class Vessel : MonoBehaviour
 
     void Update()
     {
-        if (!moving && !ghostMode && canMove)
+        if (!paused)
         {
-            if (Input.GetKey(KeyCode.S))
-                directionDown = 0;
-            else if (Input.GetKey(KeyCode.A))
-                directionDown = 1;
-            else if (Input.GetKey(KeyCode.W))
-                directionDown = 2;
-            else if (Input.GetKey(KeyCode.D))
-                directionDown = 3;
-            else if (Input.GetKeyDown(KeyCode.Space))
+            if (!moving && !ghostMode && canMove)
             {
-                ghostMode = true;
-                sr.material = defaultMat;
-                Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
-                StartCoroutine(GhostTimer());
+                if (Input.GetKey(KeyCode.S))
+                    directionDown = 0;
+                else if (Input.GetKey(KeyCode.A))
+                    directionDown = 1;
+                else if (Input.GetKey(KeyCode.W))
+                    directionDown = 2;
+                else if (Input.GetKey(KeyCode.D))
+                    directionDown = 3;
+                else if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ghostMode = true;
+                    sr.material = defaultMat;
+                    Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
+                    StartCoroutine(GhostTimer());
+                }
+                else
+                    animator.SetBool("IsWalking", false);
+                if (directionDown > -1)
+                {
+                    StartCoroutine(Move(directions[directionDown]));
+                    animator.SetInteger("Direction", directionDown);
+                    directionDown = -1;
+                }
+                if (!updatingShader)
+                    SetShader();
+            }
+            else if (moving)
+            {
+                if (Input.GetKeyDown(KeyCode.S))
+                    directionDown = 0;
+                else if (Input.GetKeyDown(KeyCode.A))
+                    directionDown = 1;
+                else if (Input.GetKeyDown(KeyCode.W))
+                    directionDown = 2;
+                else if (Input.GetKeyDown(KeyCode.D))
+                    directionDown = 3;
             }
             else
                 animator.SetBool("IsWalking", false);
-            if (directionDown > -1)
-            {
-                StartCoroutine(Move(directions[directionDown]));
-                animator.SetInteger("Direction", directionDown);
-                directionDown = -1;
-            }
-            if (!updatingShader)
-                SetShader();
         }
-        else if (moving)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.S))
-                directionDown = 0;
-            else if (Input.GetKeyDown(KeyCode.A))
-                directionDown = 1;
-            else if (Input.GetKeyDown(KeyCode.W))
-                directionDown = 2;
-            else if (Input.GetKeyDown(KeyCode.D))
-                directionDown = 3;
+            if (!paused)
+            {
+                paused = true;
+                UiManager.pause.Invoke();
+                Time.timeScale = 0;
+            }
+            else
+            {
+                paused = false;
+                UiManager.pause.Invoke();
+                Time.timeScale = 1;
+            }
         }
     }
 
@@ -193,5 +214,10 @@ public class Vessel : MonoBehaviour
             yield return null;
         }
         interactText.SetActive(false);
+    }
+
+    public void Fail(string details)
+    {
+
     }
 }
