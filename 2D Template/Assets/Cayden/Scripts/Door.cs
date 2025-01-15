@@ -13,6 +13,7 @@ public class Door : MonoBehaviour
     public Vector2Int[] tilePositions;
     public TileBase invisibleTile;
     public bool keyObtained = false;
+    public GameObject doorPart;
 
     Tilemap walls;
     void Start()
@@ -29,7 +30,7 @@ public class Door : MonoBehaviour
         Interactables.interactables.Remove(new LockedDoor("Door", true));
         if(keyObtained)
         {
-            ButtonPress.Door(transform.GetChild(1).gameObject, walls, tilePositions, null, true);
+            ButtonPress.Door(doorPart, walls, tilePositions, null, true);
         }
     }
 }

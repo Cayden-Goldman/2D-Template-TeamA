@@ -33,7 +33,7 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new KeyItem("Take"));
                 break;
             case (Objects)3:
-                interactables.Add(new LockedDoor("Unlock"));
+                interactables.Add(new LockedDoor("Unlock", false));
                 break;
             case (Objects)4:
                 interactables.Add(new Guard("Talk", gameObject));

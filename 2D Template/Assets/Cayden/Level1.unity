@@ -4973,6 +4973,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2555976010765351879, guid: 9d2884753b8cf9546a69c1c7db14a3bc, type: 3}
   m_PrefabInstance: {fileID: 397069123}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &397069125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2555976010796598854, guid: 9d2884753b8cf9546a69c1c7db14a3bc, type: 3}
+  m_PrefabInstance: {fileID: 397069123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &485358501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9040194623109260364, guid: 92828a75dfe15514b82c958e53c113ba, type: 3}
@@ -11140,6 +11145,8 @@ MonoBehaviour:
   - {x: 0, y: 20}
   - {x: 0, y: 19}
   invisibleTile: {fileID: 11400000, guid: fc7a6c1240c4f8041b4c398305e45bc9, type: 2}
+  keyObtained: 0
+  doorPart: {fileID: 397069125}
 --- !u!1001 &982164792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11951,6 +11958,7 @@ MonoBehaviour:
   player: {fileID: 845712498}
   tilePositions: []
   invisibleTile: {fileID: 0}
+  door: {fileID: 886856881}
 --- !u!1001 &570355948414819818
 PrefabInstance:
   m_ObjectHideFlags: 0
