@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98e5a1c84b6bd1489e05be95b0b5e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thescene: Title Scene
+  thescene: Intro to Title Scene
   wait: 2
 --- !u!4 &437947155
 Transform:
