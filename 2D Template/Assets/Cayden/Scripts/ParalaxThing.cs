@@ -17,6 +17,6 @@ public class ParalaxThing : MonoBehaviour
             position.y = ogCamPos.y - 1;
         else if(player.transform.position.y > ogCamPos.y)
             position.y = ogCamPos.y + 3;
-        transform.position = position;
+        transform.position = new Vector3(transform.position.x, position.y, transform.position.z);
     }
 }

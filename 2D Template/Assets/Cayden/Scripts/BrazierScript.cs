@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Tilemaps;
 
 public class BrazierScript : MonoBehaviour
 {
     public static int braziersLit = 0;
     public GameObject[] doors;
+    public Vector2Int[] tilePositions;
+    public TileBase invisibleTile;
+    Tilemap walls;
+    private void Start()
+    {
+        walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
+        foreach (Vector2Int pos in tilePositions)
+            walls.SetTile((Vector3Int)pos, invisibleTile);
+    }
     public void Light() 
     {
         GetComponentInChildren<ParticleSystem>().Play();
@@ -16,7 +26,7 @@ public class BrazierScript : MonoBehaviour
         switch (braziersLit)
         {
             case 4:
-                doors[0].SetActive(false);
+                ButtonPress.Door(doors[0], walls, tilePositions, null, true);
                 break;
         }
 
