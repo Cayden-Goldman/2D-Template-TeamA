@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChangeSpecial : MonoBehaviour
 {
     public string thescene;
+    public float wait;
     void Start()
     {
         StartCoroutine(IntroSwitch());
@@ -13,7 +14,7 @@ public class SceneChangeSpecial : MonoBehaviour
 
     IEnumerator IntroSwitch()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(wait);
         SceneManager.LoadScene(thescene);
     }
 }

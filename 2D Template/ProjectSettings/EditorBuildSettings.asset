@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Matthew M_/M Scenes/Liscencing Information.unity
     guid: 0f89826d52ada114680d76a90e863aab
+  - enabled: 1
+    path: Assets/Matthew M_/M Scenes/Introduction Scene.unity
+    guid: cfb8b454bc2363c4d8159929986a81ac
+  - enabled: 1
+    path: Assets/Matthew M_/M Scenes/Intro to Title Screen.unity
+    guid: e89d9a3cae50a324dbc7f28766a58762
   m_configObjects: {}
