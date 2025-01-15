@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class CarScript : MonoBehaviour
 {
+    public Camera cam;
     public static List<Vector3> objectPositions = new();
 
     public enum Objects
@@ -67,7 +68,7 @@ public class CarScript : MonoBehaviour
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Round(cam.ScreenToWorldPoint(mousePos).y + .5f) - .5f + offset, min, max), transform.position.z);
         }
         else
         {
@@ -92,7 +93,7 @@ public class CarScript : MonoBehaviour
             }
             max -= offset + sizeOffset;
             min += offset + sizeOffset;
-            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(Camera.main.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Clamp(Mathf.Round(cam.ScreenToWorldPoint(mousePos).x + .5f) - .5f + offset, min, max), transform.position.y, transform.position.z);
         }
     }
 

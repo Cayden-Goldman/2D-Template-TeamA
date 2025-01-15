@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 2
   length: 3
   vertical: 1
@@ -481,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 2
   length: 2
   vertical: 1
@@ -616,6 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 2
   length: 2
   vertical: 1
@@ -751,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 2
   length: 3
   vertical: 1
@@ -931,6 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 4
   length: 3
   vertical: 0
@@ -1067,6 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 0
   length: 4
   vertical: 1
@@ -1214,6 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 4
   length: 3
   vertical: 0
@@ -3233,7 +3240,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3360,6 +3367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 4
   length: 4
   vertical: 0
@@ -3495,6 +3503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 4
   length: 4
   vertical: 0
@@ -3630,6 +3639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 1
   length: 2
   vertical: 0
@@ -3765,6 +3775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 2
   length: 3
   vertical: 1
@@ -3900,6 +3911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f31cff8a2ecd6439f145c6cb7e2317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 277914892149231502}
   obj: 2
   length: 2
   vertical: 1
