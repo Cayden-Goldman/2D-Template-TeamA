@@ -95,7 +95,8 @@ public class Ghost : MonoBehaviour
             moving = false;
             if (guardTiles.GetTile((Vector3Int)pos) != null)
             {
-                UiManager.retry.Invoke();
+                UiManager.failDetails = "You were caught by a guard!";
+                UiManager.fail.Invoke();
             }
             for (int i = 0; i < 5; i++)
             {

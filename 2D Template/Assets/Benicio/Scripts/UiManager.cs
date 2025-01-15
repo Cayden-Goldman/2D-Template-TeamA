@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -9,9 +8,14 @@ public class UiManager : MonoBehaviour
 {
     public static UnityEvent pause = new();
     public static UnityEvent retry = new();
+    public static UnityEvent exit = new();
+    public static UnityEvent fail = new();
+    public static string failDetails;
 
     public Image tint;
     public Image black;
+    public GameObject pauseMenu;
+    public GameObject failMenu;
     
     float fadeTarget;
 
@@ -19,6 +23,8 @@ public class UiManager : MonoBehaviour
     {
         pause.AddListener(Pause);
         retry.AddListener(Retry);
+        exit.AddListener(Exit);
+        fail.AddListener(Fail);
         fadeTarget = tint.color.a;
         StartCoroutine(FadeIn());
     }
@@ -37,11 +43,19 @@ public class UiManager : MonoBehaviour
         if (Vessel.paused)
         {
             StartCoroutine(FadeTint(0.75f));
+            Instantiate(pauseMenu, transform).transform.SetSiblingIndex(transform.childCount - 2);
         }
         else
         {
             StartCoroutine(FadeTint(0));
+            Destroy(GameObject.Find("PauseMenu(Clone)"));
         }
+    }
+
+    void Fail()
+    {
+        StartCoroutine(FadeTint(0.75f));
+        Instantiate(failMenu, transform).transform.SetSiblingIndex(transform.childCount - 2);
     }
 
     void Retry()
@@ -55,7 +69,22 @@ public class UiManager : MonoBehaviour
             yield return null;
             black.color = new(0, 0, 0, a);
         }
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void Exit()
+    {
+        StartCoroutine(ExitSequence());
+    }
+    IEnumerator ExitSequence()
+    {
+        for (float a = 0; a < 1; a += Time.unscaledDeltaTime)
+        {
+            yield return null;
+            black.color = new(0, 0, 0, a);
+        }
+        SceneManager.LoadScene("Title Scene");
     }
 
     IEnumerator FadeTint(float target)

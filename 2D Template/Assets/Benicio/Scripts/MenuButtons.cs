@@ -16,4 +16,9 @@ public class MenuButtons : MonoBehaviour
     {
         UiManager.retry.Invoke();
     }
+
+    public void ExitToMenu()
+    {
+        UiManager.exit.Invoke();
+    }
 }
