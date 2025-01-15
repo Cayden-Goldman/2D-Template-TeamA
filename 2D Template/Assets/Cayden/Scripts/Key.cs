@@ -12,6 +12,7 @@ public class Key : MonoBehaviour
     public GameObject player;
     public Vector2Int[] tilePositions;
     public TileBase invisibleTile;
+    public GameObject door;
 
     Tilemap walls;
     void Start()
@@ -23,7 +24,7 @@ public class Key : MonoBehaviour
     }
     public void GrabKey()
     {
-        player.GetComponent<Vessel>().hasKey = true;
+        door.GetComponent<Door>().keyObtained = true;
         Interactables.positions.Remove(new Vector2Int(MathF.Round(transform.position.x).ConvertTo<int>(), MathF.Round(transform.position.x).ConvertTo<int>()));
         Interactables.interactables.Remove(new KeyItem("Take", true));
         Destroy(gameObject);

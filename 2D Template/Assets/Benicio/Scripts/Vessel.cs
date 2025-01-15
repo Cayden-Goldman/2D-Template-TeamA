@@ -17,7 +17,6 @@ public class Vessel : MonoBehaviour
     public GameObject interactText;
     public Material possessMat;
     public Material defaultMat;
-    [HideInInspector] public bool hasKey;
 
     Tilemap walls;
     bool moving;

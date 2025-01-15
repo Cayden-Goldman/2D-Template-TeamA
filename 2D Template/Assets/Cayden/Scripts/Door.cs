@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
     public GameObject player;
     public Vector2Int[] tilePositions;
     public TileBase invisibleTile;
+    public bool keyObtained = false;
 
     Tilemap walls;
     void Start()
@@ -26,7 +27,7 @@ public class Door : MonoBehaviour
         foreach (Vector2Int pos in tilePositions)
             Interactables.positions.Remove(pos);
         Interactables.interactables.Remove(new LockedDoor("Door", true));
-        if(player.GetComponent<Vessel>().hasKey)
+        if(keyObtained)
         {
             ButtonPress.Door(transform.GetChild(1).gameObject, walls, tilePositions, null, true);
         }
