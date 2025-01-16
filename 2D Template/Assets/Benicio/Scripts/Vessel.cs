@@ -111,9 +111,11 @@ public class Vessel : MonoBehaviour
 
     IEnumerator Sleeping()
     {
+        GetComponentInChildren<ParticleSystem>().Play();
         animator.SetBool("IsPossessed", false);
         yield return new WaitUntil(() => !ghostMode);
         animator.SetBool("IsPossessed", true);
+        GetComponentInChildren<ParticleSystem>().Stop();
     }
 
     IEnumerator Move(Vector2Int delta)
