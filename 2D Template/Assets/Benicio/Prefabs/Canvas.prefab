@@ -558,8 +558,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tint: {fileID: 9108327430043604516}
   black: {fileID: 7204993058217423295}
-  pauseMenu: {fileID: 0}
-  failMenu: {fileID: 0}
+  pauseMenu: {fileID: 7591053043620146375, guid: 4c8dd951244e71e42acd44e50705094b, type: 3}
+  failMenu: {fileID: 4977417622466517705, guid: 7dee6693dfa4cf64daffce91cf03acbb, type: 3}
 --- !u!1 &2159406279944431002
 GameObject:
   m_ObjectHideFlags: 0

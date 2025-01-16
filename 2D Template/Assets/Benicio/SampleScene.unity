@@ -7341,14 +7341,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1385851926}
-    - target: {fileID: 6903700328833971554, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
-      propertyPath: failMenu
-      value: 
-      objectReference: {fileID: 4977417622466517705, guid: 7dee6693dfa4cf64daffce91cf03acbb, type: 3}
-    - target: {fileID: 6903700328833971554, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
-      propertyPath: pauseMenu
-      value: 
-      objectReference: {fileID: 7591053043620146375, guid: 4c8dd951244e71e42acd44e50705094b, type: 3}
     - target: {fileID: 7204993058217423295, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
