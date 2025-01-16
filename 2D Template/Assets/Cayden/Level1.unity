@@ -11271,9 +11271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69344577b5a704db0280238b27a86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Press E to interact with certain items or objects. Some of they may open
+  text: Press E to interact with certain items or objects. Some of them may open
     doors and let you progress.
-  npcName: 'Tutorial:'
+  npcName: Tutorial
 --- !u!50 &998236393
 Rigidbody2D:
   serializedVersion: 4
@@ -11912,7 +11912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: You can push around boxes when possessing the guard, they can be used to
     hold down buttons for you.
-  npcName: 'Tutorial:'
+  npcName: Tutorial
 --- !u!50 &1542829479
 Rigidbody2D:
   serializedVersion: 4
