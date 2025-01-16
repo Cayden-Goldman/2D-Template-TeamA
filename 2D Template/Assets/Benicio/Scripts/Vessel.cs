@@ -198,7 +198,7 @@ public class Vessel : MonoBehaviour
     IEnumerator GhostTimer()
     {
         TextMeshPro text = interactText.GetComponent<TextMeshPro>();
-        ghostTimer = 15;
+        ghostTimer = 20;
         while (ghostMode)
         {
             if (ghostTimer > 0)

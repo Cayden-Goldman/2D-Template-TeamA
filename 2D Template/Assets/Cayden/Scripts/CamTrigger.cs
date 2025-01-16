@@ -14,7 +14,7 @@ public class CamTrigger : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("Player"))
+        if(collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Ghost"))
         {
             if(moved)
             {

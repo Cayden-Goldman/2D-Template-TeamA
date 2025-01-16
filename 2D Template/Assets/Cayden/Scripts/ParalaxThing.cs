@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParalaxThing : MonoBehaviour
 {
     public GameObject player;
+    GameObject ghost;
     public Vector3 ogCamPos;
     Vector3 position;
     private void Start()
@@ -13,10 +14,18 @@ public class ParalaxThing : MonoBehaviour
     }
     void Update()
     {
-        if(player.transform.position.y < ogCamPos.y)
+        if (Vessel.ghostMode == true)
+            ghost = GameObject.Find("Ghost(Clone)");
+        else
+            ghost = player;
+        if(ghost.transform.position.y < ogCamPos.y)
             position.y = ogCamPos.y - 1;
-        else if(player.transform.position.y > ogCamPos.y)
+        else if(ghost.transform.position.y > ogCamPos.y)
             position.y = ogCamPos.y + 3;
-        transform.position = new Vector3(transform.position.x, position.y, transform.position.z);
+        if (ghost.transform.position.x < ogCamPos.x)
+            position.x = ogCamPos.x - 1;
+        else if (ghost.transform.position.x > ogCamPos.x)
+            position.x = ogCamPos.x + 1;
+        transform.position = new Vector3(position.x, position.y, transform.position.z);
     }
 }
