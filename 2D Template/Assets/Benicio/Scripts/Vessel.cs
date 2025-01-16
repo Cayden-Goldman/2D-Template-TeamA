@@ -41,6 +41,7 @@ public class Vessel : MonoBehaviour
             ghostMode = true;
             sr.material = defaultMat;
             Instantiate(ghostObj, new Vector3(0, -3), new());
+            StartCoroutine(Sleeping());
         }
     }
 
@@ -64,6 +65,7 @@ public class Vessel : MonoBehaviour
                     sr.material = defaultMat;
                     Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
                     StartCoroutine(GhostTimer());
+                    StartCoroutine(Sleeping());
                 }
                 else
                     animator.SetBool("IsWalking", false);
@@ -105,6 +107,13 @@ public class Vessel : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+    }
+
+    IEnumerator Sleeping()
+    {
+        animator.SetBool("IsPossessed", false);
+        yield return new WaitUntil(() => !ghostMode);
+        animator.SetBool("IsPossessed", true);
     }
 
     IEnumerator Move(Vector2Int delta)
