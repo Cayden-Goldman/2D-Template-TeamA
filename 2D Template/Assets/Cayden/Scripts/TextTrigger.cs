@@ -6,5 +6,6 @@ public class TextTrigger : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         TextBox.AddDialogue(npcName, text, true);
+        gameObject.SetActive(false);
     }
 }

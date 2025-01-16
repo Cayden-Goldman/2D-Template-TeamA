@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Vessel : MonoBehaviour
 {
@@ -35,6 +36,13 @@ public class Vessel : MonoBehaviour
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        if(SceneManager.GetActiveScene().name == "guh")
+        {
+            ghostMode = true;
+            canMove = false;
+            sr.material = defaultMat;
+            Instantiate(ghostObj, new Vector3(0, -3), new());
+        }
     }
 
     void Update()
