@@ -24,7 +24,7 @@ public class Interactables : MonoBehaviour
         switch (obj)
         {
             case 0:
-                interactables.Add(new CrateGame("Search", true));
+                interactables.Add(new CrateGame("Search", gameObject, true));
                 break;
             case (Objects)1:
                 interactables.Add(new Lever("Pull", gameObject));
@@ -55,15 +55,16 @@ public abstract class Interactable
 
 public class CrateGame : Interactable
 {
-    public CrateGame(string text, bool ghostOnly = false)
+    public CrateGame(string text, GameObject obj , bool ghostOnly = false)
     {
         this.text = text;
+        this.obj = obj;
         this.ghostOnly = ghostOnly;
     }
 
     public override void Interact()
     {
-        BoxMinigame.evnt.Invoke();
+        obj.GetComponent<BoxMinigame>().Minigame();
     }
 }
 

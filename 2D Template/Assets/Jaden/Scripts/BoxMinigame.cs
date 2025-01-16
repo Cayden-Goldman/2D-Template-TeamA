@@ -5,14 +5,9 @@ using UnityEngine.Events;
 
 public class BoxMinigame : MonoBehaviour
 {
-    public static UnityEvent evnt = new();
     public GameObject player, boxGame, collidables, text;
     public GameObject key;
-    private void Start()
-    {
-        evnt.AddListener(Minigame);
-    }
-    void Minigame()
+    public void Minigame()
     {
         Vessel.paused = true;
         Vessel.canMove = false;

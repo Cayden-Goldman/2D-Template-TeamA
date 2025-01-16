@@ -9,6 +9,7 @@ public class CarScript : MonoBehaviour
 {
     public Camera cam;
     public static List<Vector3> objectPositions = new();
+    public GameObject crate;
 
     public enum Objects
     {
@@ -87,8 +88,8 @@ public class CarScript : MonoBehaviour
             {
                 if(transform.position.x == 7)
                 {
-                    GameObject gameObject = GameObject.Find("Crate");
-                    gameObject.GetComponent<BoxMinigame>().MinigameEnd();
+                   // GameObject gameObject = GameObject.Find("Crate");
+                    crate.GetComponent<BoxMinigame>().MinigameEnd();
                 }
             }
             max -= offset + sizeOffset;
