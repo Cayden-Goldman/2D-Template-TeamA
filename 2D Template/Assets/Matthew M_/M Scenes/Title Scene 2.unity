@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d2142f68aa3e34d81f9be3785f924a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: 
+  scenename: guh
   Image: {fileID: 389165793}
   WaitTime: 1
 --- !u!4 &385452812

@@ -695,7 +695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Liscencing Information
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50cff4f4e06bac54c8c28a21e046c295, type: 2}
   m_sharedMaterial: {fileID: 8993746263504912789, guid: 50cff4f4e06bac54c8c28a21e046c295, type: 2}
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d2142f68aa3e34d81f9be3785f924a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: Liscencing Information
+  scenename: Credits Scene
   Image: {fileID: 501100632}
   WaitTime: 1
 --- !u!4 &941458418
@@ -1753,8 +1753,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -415}
-  m_SizeDelta: {x: 531.72, y: 119.02}
+  m_AnchoredPosition: {x: -2, y: -415}
+  m_SizeDelta: {x: 304, y: 119.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149153817
 MonoBehaviour:
