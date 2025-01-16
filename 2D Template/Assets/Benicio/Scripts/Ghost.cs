@@ -9,6 +9,8 @@ using Unity.VisualScripting.Antlr3.Runtime;
 public class Ghost : MonoBehaviour
 {
     public static Vector2Int pos;
+    public static bool canMove;
+
     public static readonly List<string> passableTiles = new() { "baul", "CrateInner" };
 
     public GameObject interactText;
@@ -23,6 +25,7 @@ public class Ghost : MonoBehaviour
 
     void Start()
     {
+        canMove = true;
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         guardTiles = GameObject.Find("DangerTiles").GetComponent<Tilemap>();
@@ -35,7 +38,7 @@ public class Ghost : MonoBehaviour
     {
         if (!Vessel.paused)
         {
-            if (!moving)
+            if (!moving && canMove)
             {
                 if (Input.GetKey(KeyCode.S))
                     directionDown = 0;
@@ -97,6 +100,7 @@ public class Ghost : MonoBehaviour
             {
                 UiManager.failDetails = "You were caught by a guard!";
                 UiManager.fail.Invoke();
+                Npc.playerFound.Invoke();
             }
             for (int i = 0; i < 5; i++)
             {

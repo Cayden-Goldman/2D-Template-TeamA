@@ -39,7 +39,6 @@ public class Vessel : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "guh")
         {
             ghostMode = true;
-            canMove = false;
             sr.material = defaultMat;
             Instantiate(ghostObj, new Vector3(0, -3), new());
         }
@@ -220,11 +219,7 @@ public class Vessel : MonoBehaviour
             }
             yield return null;
         }
+        text.color = Color.white;
         interactText.SetActive(false);
-    }
-
-    public void Fail(string details)
-    {
-
     }
 }
