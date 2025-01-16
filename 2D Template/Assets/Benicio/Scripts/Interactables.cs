@@ -33,10 +33,10 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new KeyItem("Take"));
                 break;
             case (Objects)3:
-                interactables.Add(new LockedDoor("Unlock", false));
+                interactables.Add(new LockedDoor("Unlock", false, true));
                 break;
             case (Objects)4:
-                interactables.Add(new Guard("Talk", gameObject));
+                interactables.Add(new Guard("Talk", gameObject, false, true));
                 break;
             case (Objects)5:
                 interactables.Add(new Brazier("Light", gameObject));
@@ -49,17 +49,19 @@ public abstract class Interactable
 {
     public string text;
     public bool ghostOnly;
+    public bool vesselOnly;
     public GameObject obj;
     public abstract void Interact();
 }
 
 public class CrateGame : Interactable
 {
-    public CrateGame(string text, GameObject obj , bool ghostOnly = false)
+    public CrateGame(string text, GameObject obj , bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
         this.obj = obj;
         this.ghostOnly = ghostOnly;
+        this.vesselOnly = vesselOnly;
     }
 
     public override void Interact()
@@ -70,11 +72,12 @@ public class CrateGame : Interactable
 
 public class Lever : Interactable
 {
-    public Lever(string text, GameObject obj, bool ghostOnly = false)
+    public Lever(string text, GameObject obj, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
         this.obj = obj;
         this.ghostOnly = ghostOnly;
+        this.vesselOnly = vesselOnly;
     }
 
     public override void Interact()
@@ -85,10 +88,11 @@ public class Lever : Interactable
 
 public class KeyItem : Interactable
 {
-    public KeyItem(string text, bool ghostOnly = false)
+    public KeyItem(string text, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
         this.ghostOnly = ghostOnly;
+        this.vesselOnly = vesselOnly;
     }
 
     public override void Interact()
@@ -99,10 +103,11 @@ public class KeyItem : Interactable
 
 public class LockedDoor : Interactable
 {
-    public LockedDoor(string text, bool ghostOnly = false)
+    public LockedDoor(string text, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
         this.ghostOnly = ghostOnly;
+        this.vesselOnly = vesselOnly;
     }
 
     public override void Interact()
@@ -113,11 +118,12 @@ public class LockedDoor : Interactable
 
 public class Guard : Interactable
 {
-    public Guard(string text, GameObject obj, bool ghostOnly = false)
+    public Guard(string text, GameObject obj, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
         this.obj = obj;
         this.ghostOnly = ghostOnly;
+        this.vesselOnly = vesselOnly;
     }
 
     public override void Interact()
@@ -128,11 +134,12 @@ public class Guard : Interactable
 
 public class Brazier : Interactable
 {
-    public Brazier(string text, GameObject obj, bool ghostOnly = false)
+    public Brazier(string text, GameObject obj, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
         this.obj = obj;
         this.ghostOnly = ghostOnly;
+        this.vesselOnly = vesselOnly;
     }
     public override void Interact()
     {

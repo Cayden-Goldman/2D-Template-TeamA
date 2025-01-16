@@ -55,7 +55,9 @@ public class UiManager : MonoBehaviour
     void Fail()
     {
         StartCoroutine(FadeTint(0.75f));
-        Instantiate(failMenu, transform).transform.SetSiblingIndex(transform.childCount - 2);
+        GameObject menu = Instantiate(failMenu, transform);
+        menu.transform.SetSiblingIndex(transform.childCount - 2);
+
     }
 
     void Retry()
@@ -95,7 +97,7 @@ public class UiManager : MonoBehaviour
             float fadeDirection = Mathf.Sign(fadeTarget - tint.color.a);
             while (fadeTarget * fadeDirection > tint.color.a * fadeDirection)
             {
-                tint.color = new(0, 0, 0, tint.color.a + fadeDirection * Time.unscaledDeltaTime);
+                tint.color = new(0, 0, 0, tint.color.a + fadeDirection * Time.unscaledDeltaTime * 1.5f);
                 yield return null;
                 fadeDirection = Mathf.Sign(fadeTarget - tint.color.a);
             }

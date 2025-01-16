@@ -156,7 +156,7 @@ public class Vessel : MonoBehaviour
                         while (!moving)
                         {
                             yield return null;
-                            if (Input.GetKeyDown(KeyCode.E))
+                            if (Input.GetKeyDown(KeyCode.E) && canMove)
                             {
                                 interactable.Interact();
                             }
@@ -181,8 +181,7 @@ public class Vessel : MonoBehaviour
                 currentSprite = sr.sprite;
                 sr.material.SetTexture("_Texture", currentSprite.texture);
             }
-            else
-                break;
+            else break;
         }
         updatingShader = false;
     }
@@ -208,7 +207,7 @@ public class Vessel : MonoBehaviour
         ghostTimer = 20;
         while (ghostMode)
         {
-            if (ghostTimer > 0)
+            if (ghostTimer > 0 && !paused)
             {
                 ghostTimer -= Time.deltaTime;
                 SetText(Mathf.CeilToInt(ghostTimer) + "", new(0.5f, 1));
@@ -216,6 +215,11 @@ public class Vessel : MonoBehaviour
                 {
                     text.color = Color.red + Color.cyan * Mathf.CeilToInt(Mathf.Sin(Time.time * 10));
                 }
+            }
+            else if (ghostTimer <= 0)
+            {
+                UiManager.failDetails = "Your vessel woke up!";
+                UiManager.fail.Invoke();
             }
             yield return null;
         }

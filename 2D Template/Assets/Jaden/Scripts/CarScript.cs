@@ -26,7 +26,7 @@ public class CarScript : MonoBehaviour
     [Range(1, 4)] public int length = 1;
     public bool vertical;
     public bool key;
-    public Material[] mats;
+    //public Material[] mats;
 
     Vector3 mousePos;
     Transform parent;
@@ -40,7 +40,7 @@ public class CarScript : MonoBehaviour
     public void Start()
     {
         parent = transform.parent;
-        SetMat(sr = GetComponent<SpriteRenderer>());
+        //SetMat(sr = GetComponent<SpriteRenderer>());
         offset = 0.5f - (length % 2) / 2f;
         halfDistance = (length - 1) / 2f;
     }
@@ -50,7 +50,7 @@ public class CarScript : MonoBehaviour
         mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, .1f);
         if (!clicking)
         {
-            SetMat(sr, true);
+            //SetMat(sr, true);
             GetObjectPositions();
         }
         clicking = true;
@@ -101,7 +101,7 @@ public class CarScript : MonoBehaviour
     public void OnMouseUp()
     {
         clicking = false;
-        SetMat(sr);
+        //SetMat(sr);
     }
 
     public void GetObjectPositions()
@@ -128,28 +128,28 @@ public class CarScript : MonoBehaviour
         }
     }
 
-    void SetMat(SpriteRenderer sr, bool clicking = false)
-    {
-        if (clicking)
-        {
-            if (key)
-                sr.material = mats[5];
-            else if (vertical)
-                sr.material = mats[3];
-            else
-                sr.material = mats[4];
-        }
-        else
-        {
-            if (key)
-                sr.material = mats[2];
-            else if (vertical)
-                sr.material = mats[0];
-            else
-                sr.material = mats[1];
-        }
-        sr.material.SetTexture("_Texture", sr.sprite.texture);
-    }
+    //void SetMat(SpriteRenderer sr, bool clicking = false)
+    //{
+    //    if (clicking)
+    //    {
+    //        if (key)
+    //            sr.material = mats[5];
+    //        else if (vertical)
+    //            sr.material = mats[3];
+    //        else
+    //            sr.material = mats[4];
+    //    }
+    //    else
+    //    {
+    //        if (key)
+    //            sr.material = mats[2];
+    //        else if (vertical)
+    //            sr.material = mats[0];
+    //        else
+    //            sr.material = mats[1];
+    //    }
+    //    sr.material.SetTexture("_Texture", sr.sprite.texture);
+    //}
 
     public void OnValidate()
     {

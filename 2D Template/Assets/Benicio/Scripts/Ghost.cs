@@ -101,27 +101,31 @@ public class Ghost : MonoBehaviour
                 UiManager.failDetails = "You were caught by a guard!";
                 UiManager.fail.Invoke();
                 Npc.playerFound.Invoke();
+                Vessel.canMove = false;
             }
             for (int i = 0; i < 5; i++)
             {
                 if (Interactables.positions.Contains(pos + Vessel.directions[i]))
                 {
                     Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + Vessel.directions[i])];
-                    interactText.GetComponent<TextMeshPro>().text = interactable.text;
-                    foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
-                        outline.text = interactable.text;
-                    interactText.transform.localPosition = new Vector2(0.5f, 1) + Vessel.directions[i];
-                    interactText.SetActive(true);
-                    while (!moving)
+                    if (!interactable.vesselOnly)
                     {
-                        yield return null;
-                        if (Input.GetKeyDown(KeyCode.E))
+                        interactText.GetComponent<TextMeshPro>().text = interactable.text;
+                        foreach (TextMeshPro outline in interactText.GetComponentsInChildren<TextMeshPro>())
+                            outline.text = interactable.text;
+                        interactText.transform.localPosition = new Vector2(0.5f, 1) + Vessel.directions[i];
+                        interactText.SetActive(true);
+                        while (!moving)
                         {
-                            interactable.Interact();
+                            yield return null;
+                            if (Input.GetKeyDown(KeyCode.E) && canMove)
+                            {
+                                interactable.Interact();
+                            }
                         }
+                        interactText.SetActive(false);
+                        break;
                     }
-                    interactText.SetActive(false);
-                    break;
                 }
             }
         }
