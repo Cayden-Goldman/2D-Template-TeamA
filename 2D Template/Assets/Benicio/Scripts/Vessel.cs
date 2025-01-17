@@ -2,7 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Vessel : MonoBehaviour
@@ -28,10 +27,20 @@ public class Vessel : MonoBehaviour
     bool updatingShader;
     float ghostTimer;
     bool interactPending;
+    bool timeOut;
+
+    void Awake()
+    {
+        Movable.positions = new();
+        Movable.objects = new();
+        Interactables.positions = new();
+        Interactables.interactables = new();
+    }
 
     void Start()
     {
-        ghostMode = false;
+        ghostMode = paused = false;
+        canMove = true;
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
@@ -41,6 +50,7 @@ public class Vessel : MonoBehaviour
             ghostMode = true;
             sr.material = defaultMat;
             Instantiate(ghostObj, new Vector3(0, -3), new());
+            StartCoroutine(Sleeping());
         }
     }
 
@@ -60,10 +70,12 @@ public class Vessel : MonoBehaviour
                     directionDown = 3;
                 else if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    StartCoroutine(AudioManager.PlaySound("Possess"));
                     ghostMode = true;
                     sr.material = defaultMat;
                     Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
                     StartCoroutine(GhostTimer());
+                    StartCoroutine(Sleeping());
                 }
                 else
                     animator.SetBool("IsWalking", false);
@@ -107,6 +119,15 @@ public class Vessel : MonoBehaviour
         }
     }
 
+    IEnumerator Sleeping()
+    {
+        GetComponentInChildren<ParticleSystem>().Play();
+        animator.SetBool("IsPossessed", false);
+        yield return new WaitUntil(() => !ghostMode || timeOut);
+        animator.SetBool("IsPossessed", true);
+        GetComponentInChildren<ParticleSystem>().Stop();
+    }
+
     IEnumerator Move(Vector2Int delta)
     {
         TileBase tile = walls.GetTile((Vector3Int)(pos + delta));
@@ -123,12 +144,15 @@ public class Vessel : MonoBehaviour
                     animator.SetBool("IsWalking", true);
                     Vector2Int startPos = pos;
                     pos += delta;
+                    StartCoroutine(AudioManager.PlaySound("Push"));
                     for (float t = 0; t < 1; t += Time.deltaTime * 6)
                     {
                         transform.position = Vector2.Lerp(startPos, pos, t);
                         obj.transform.position = transform.position + (Vector3)(Vector2)delta;
                         yield return null;
                     }
+                    transform.position = (Vector2)pos;
+                    obj.transform.position = transform.position + (Vector3)(Vector2)delta;
                 }
             }
             else if (!Interactables.positions.Contains(pos + delta))
@@ -142,28 +166,64 @@ public class Vessel : MonoBehaviour
                     transform.position = Vector2.Lerp(startPos, pos, t);
                     yield return null;
                 }
+                transform.position = (Vector2)pos;
             }
             moving = false;
-            for (int i = 0; i < 4; i++)
+            if (!interactPending)
             {
-                if (!interactPending && Interactables.positions.Contains(pos + directions[i]))
+                for (int i = 0; i < 4; i++)
                 {
-                    Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
-                    if (!interactable.ghostOnly)
+                    if (Movable.positions.Contains(pos + directions[i]) && walls.GetTile((Vector3Int)(pos + directions[i] * 2)) != null && walls.GetTile((Vector3Int)(pos + directions[i] * -1)) == null)
                     {
-                        SetText(interactable.text, new Vector2(0.5f, 1) + directions[i]);
+                        GameObject movable = Movable.objects[Movable.positions.IndexOf(pos + directions[i])];
+                        SetText("Pull", new Vector2(0.5f, 1) + directions[i]);
                         interactPending = true;
                         while (!moving)
                         {
                             yield return null;
                             if (Input.GetKeyDown(KeyCode.E) && canMove)
                             {
-                                interactable.Interact();
+                                delta = directions[i] * -1;
+                                Movable.positions[Movable.positions.IndexOf(pos + directions[i])] += delta;
+                                moving = true;
+                                animator.SetInteger("Direction", (i + 2) % 4);
+                                animator.SetBool("IsWalking", true);
+                                Vector2Int startPos = pos;
+                                pos += delta;
+                                StartCoroutine(AudioManager.PlaySound("Pull"));
+                                for (float t = 0; t < 1; t += Time.deltaTime * 6)
+                                {
+                                    transform.position = Vector2.Lerp(startPos, pos, t);
+                                    movable.transform.position = transform.position - (Vector3)(Vector2)delta;
+                                    yield return null;
+                                }
+                                transform.position = (Vector2)pos;
+                                movable.transform.position = transform.position - (Vector3)(Vector2)delta;
+                                moving = false;
+                                break;
                             }
                         }
                         interactPending = false;
                         interactText.SetActive(false);
-                        break; 
+                        break;
+                    }
+                    else if (Interactables.positions.Contains(pos + directions[i]))
+                    {
+                        Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
+                        if (!interactable.ghostOnly)
+                        {
+                            SetText(interactable.text, new Vector2(0.5f, 1) + directions[i]);
+                            interactPending = true;
+                            while (!moving)
+                            {
+                                yield return null;
+                                if (Input.GetKeyDown(KeyCode.E) && canMove)
+                                    interactable.Interact();
+                            }
+                            interactPending = false;
+                            interactText.SetActive(false);
+                            break;
+                        }
                     }
                 }
             }
@@ -211,15 +271,19 @@ public class Vessel : MonoBehaviour
             {
                 ghostTimer -= Time.deltaTime;
                 SetText(Mathf.CeilToInt(ghostTimer) + "", new(0.5f, 1));
-                if (ghostTimer < 3)
-                {
+                if (ghostTimer < 5)
                     text.color = Color.red + Color.cyan * Mathf.CeilToInt(Mathf.Sin(Time.time * 10));
-                }
             }
             else if (ghostTimer <= 0)
             {
-                UiManager.failDetails = "Your vessel woke up!";
-                UiManager.fail.Invoke();
+                if (UiManager.failDetails == "")
+                {
+                    UiManager.failDetails = "Your vessel woke up";
+                    UiManager.fail.Invoke();
+                    timeOut = true;
+                    Ghost.canMove = false;
+                }
+                break;
             }
             yield return null;
         }

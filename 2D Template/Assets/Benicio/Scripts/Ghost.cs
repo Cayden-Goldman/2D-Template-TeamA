@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting.Antlr3.Runtime;
 
 public class Ghost : MonoBehaviour
 {
@@ -50,6 +48,7 @@ public class Ghost : MonoBehaviour
                     directionDown = 3;
                 else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
                 {
+                    StartCoroutine(AudioManager.PlaySound("Possess"));
                     Vessel.ghostMode = false;
                     Destroy(gameObject);
                 }
@@ -98,10 +97,11 @@ public class Ghost : MonoBehaviour
             moving = false;
             if (guardTiles.GetTile((Vector3Int)pos) != null)
             {
-                UiManager.failDetails = "You were caught by a guard!";
+                UiManager.failDetails = "You were caught by a guard";
                 UiManager.fail.Invoke();
                 Npc.playerFound.Invoke();
                 Vessel.canMove = false;
+                Ghost.canMove = false;
             }
             for (int i = 0; i < 5; i++)
             {

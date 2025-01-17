@@ -25,13 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2344268282752730564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 11}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 755439976671773103}
-  - {fileID: 6747438395165351963}
-  m_Father: {fileID: 3170228863308241377}
+  m_Father: {fileID: 6747438395544164276}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &6332959705461133649
@@ -82,7 +81,7 @@ Transform:
   - {fileID: 6747438395869286462}
   - {fileID: 6747438397033764882}
   - {fileID: 6747438396000747224}
-  m_Father: {fileID: 7642253756969748608}
+  m_Father: {fileID: 6747438395544164276}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6747438395310462587
@@ -184,17 +183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 1
   length: 2
   vertical: 0
   key: 1
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438395310462581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -320,17 +313,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 2
   length: 3
   vertical: 1
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438395382099545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -386,6 +373,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3170228863308241377}
+  - {fileID: 6747438395165351963}
+  - {fileID: 7642253756969748608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -488,17 +477,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 4
   length: 3
   vertical: 0
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438395869286457
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -624,17 +607,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 2
   length: 2
   vertical: 1
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438396000747227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -760,17 +737,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 0
   length: 4
   vertical: 1
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438396260732224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -896,17 +867,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 4
   length: 3
   vertical: 0
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438396299244291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1032,17 +997,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 2
   length: 3
   vertical: 1
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438396864052426
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1168,17 +1127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5914641543071391486}
+  crate: {fileID: 0}
   obj: 4
   length: 3
   vertical: 0
   key: 0
-  mats:
-  - {fileID: 2100000, guid: d5c381f410367d64282c29cf79ba4222, type: 2}
-  - {fileID: 2100000, guid: dc457c485ae404346bf7e01f5c0b0fc6, type: 2}
-  - {fileID: 2100000, guid: cf6fe71d11838a94a87e757b97095b37, type: 2}
-  - {fileID: 2100000, guid: 7ce545a52069c524690656ba3fd32834, type: 2}
-  - {fileID: 2100000, guid: 96091afdde6a4df4e9dd5720a5aacfcf, type: 2}
-  - {fileID: 2100000, guid: aeb9853c799722c499629a0c9baa3a19, type: 2}
 --- !u!61 &6747438397033764877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3171,8 +3124,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7642253756969748608}
+  m_Children: []
   m_Father: {fileID: 6747438395544164276}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

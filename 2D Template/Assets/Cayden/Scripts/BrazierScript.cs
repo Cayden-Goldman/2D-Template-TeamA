@@ -28,6 +28,9 @@ public class BrazierScript : MonoBehaviour
             case 4:
                 ButtonPress.Door(doors[0], walls, tilePositions, null, true);
                 break;
+            case 5:
+                ButtonPress.Door(doors[1], walls, tilePositions, null, true);
+                break;
         }
 
     }
