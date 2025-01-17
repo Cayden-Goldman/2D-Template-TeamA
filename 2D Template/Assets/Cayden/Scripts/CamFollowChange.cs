@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class CamFollowChange : MonoBehaviour
 {
-    public GameObject followThing, camera;
+    public GameObject followThing, cam;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ghost"))
         {
-            camera.GetComponent<CinemachineVirtualCamera>().Follow = followThing.transform;
+            cam.GetComponent<CinemachineVirtualCamera>().Follow = followThing.transform;
         }
     }
 }
