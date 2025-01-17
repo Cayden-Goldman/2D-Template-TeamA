@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Cayden/Level3.unity
     guid: d0fc673e1bcc98e4ab561d082b427aff
   - enabled: 1
+    path: Assets/Cayden/Level4.unity
+    guid: f341b2e8307dce5448b847800c3c573a
+  - enabled: 1
     path: Assets/Matthew M_/M Scenes/Title Scene.unity
     guid: 14b00e2478cce9c449d5dac3c114b3ea
   - enabled: 1
