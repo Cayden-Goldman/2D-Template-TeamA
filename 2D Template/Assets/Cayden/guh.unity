@@ -1861,7 +1861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69344577b5a704db0280238b27a86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Press space to possess the guard.
+  text: Press space to possess and unpossess the guard. As a ghost you can pass through
+    certain objects you would not otherwise be able to pass through
   npcName: Tutorial
 --- !u!50 &1133591411
 Rigidbody2D:
