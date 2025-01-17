@@ -172,6 +172,7 @@ MonoBehaviour:
   dialogue: is a snake with no eyes still a snake
   direction: 3
   dangerTile: {fileID: 11400000, guid: 5cbe32664b0951049b0e5f32f9fac319, type: 2}
+  alert: {fileID: 5887138807401829233, guid: 5591f06d9076996448b35cfa60e17a9a, type: 3}
 --- !u!95 &28536969
 Animator:
   serializedVersion: 4
@@ -748,6 +749,7 @@ MonoBehaviour:
   dialogue: is a snake with no eyes still a snake
   direction: 2
   dangerTile: {fileID: 11400000, guid: 5cbe32664b0951049b0e5f32f9fac319, type: 2}
+  alert: {fileID: 5887138807401829233, guid: 5591f06d9076996448b35cfa60e17a9a, type: 3}
 --- !u!95 &779463503
 Animator:
   serializedVersion: 4
@@ -7074,6 +7076,7 @@ MonoBehaviour:
   dialogue: is a snake with no eyes still a snake
   direction: 1
   dangerTile: {fileID: 11400000, guid: 5cbe32664b0951049b0e5f32f9fac319, type: 2}
+  alert: {fileID: 5887138807401829233, guid: 5591f06d9076996448b35cfa60e17a9a, type: 3}
 --- !u!95 &2090361681
 Animator:
   serializedVersion: 4
@@ -7160,6 +7163,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2138406193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2138406195}
+  - component: {fileID: 2138406194}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2138406194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138406193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4a30921eddb1e4caa35a5c7bda8215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2138406195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138406193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6201596, y: 2.581847, z: -3.9351633}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &558184851422369285
 PrefabInstance:

@@ -70,6 +70,7 @@ public class Vessel : MonoBehaviour
                     directionDown = 3;
                 else if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    StartCoroutine(AudioManager.PlaySound("Possess"));
                     ghostMode = true;
                     sr.material = defaultMat;
                     Instantiate(ghostObj, new Vector3(pos.x, pos.y), new());
@@ -143,6 +144,7 @@ public class Vessel : MonoBehaviour
                     animator.SetBool("IsWalking", true);
                     Vector2Int startPos = pos;
                     pos += delta;
+                    StartCoroutine(AudioManager.PlaySound("Push"));
                     for (float t = 0; t < 1; t += Time.deltaTime * 6)
                     {
                         transform.position = Vector2.Lerp(startPos, pos, t);
@@ -188,6 +190,7 @@ public class Vessel : MonoBehaviour
                                 animator.SetBool("IsWalking", true);
                                 Vector2Int startPos = pos;
                                 pos += delta;
+                                StartCoroutine(AudioManager.PlaySound("Pull"));
                                 for (float t = 0; t < 1; t += Time.deltaTime * 6)
                                 {
                                     transform.position = Vector2.Lerp(startPos, pos, t);
@@ -273,10 +276,13 @@ public class Vessel : MonoBehaviour
             }
             else if (ghostTimer <= 0)
             {
-                UiManager.failDetails = "Your vessel woke up";
-                UiManager.fail.Invoke();
-                timeOut = true;
-                Ghost.canMove = false;
+                if (UiManager.failDetails == "")
+                {
+                    UiManager.failDetails = "Your vessel woke up";
+                    UiManager.fail.Invoke();
+                    timeOut = true;
+                    Ghost.canMove = false;
+                }
                 break;
             }
             yield return null;

@@ -40,11 +40,13 @@ public class TextBox : MonoBehaviour
         {
             text.text = "";
             string nextText = (string)texts.Dequeue();
+            StartCoroutine(AudioManager.PlaySound("Textbox", 0));
             for (int i = 0; i < nextText.Length; i++) 
             {
                 yield return new WaitForSeconds(0.02f);
                 text.text += nextText[i];
             }
+            AudioManager.loopChannels[0] = true;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
         Vessel.canMove = true;

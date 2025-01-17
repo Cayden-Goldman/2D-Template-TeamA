@@ -22,6 +22,7 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
+        failDetails = "";
         pause.AddListener(Pause);
         retry.AddListener(Retry);
         exit.AddListener(Exit);

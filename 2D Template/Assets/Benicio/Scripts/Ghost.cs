@@ -48,6 +48,7 @@ public class Ghost : MonoBehaviour
                     directionDown = 3;
                 else if (Input.GetKeyDown(KeyCode.Space) && pos == Vessel.pos)
                 {
+                    StartCoroutine(AudioManager.PlaySound("Possess"));
                     Vessel.ghostMode = false;
                     Destroy(gameObject);
                 }

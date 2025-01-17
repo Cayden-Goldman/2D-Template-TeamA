@@ -17,6 +17,7 @@ public class Npc : MonoBehaviour
     public string dialogue;
     public Direction direction;
     public TileBase dangerTile;
+    public GameObject alert;
 
     Tilemap walls;
     Tilemap dangerTiles;
@@ -41,7 +42,7 @@ public class Npc : MonoBehaviour
         Vector3Int startPos = new((int)transform.position.x, (int)transform.position.y);
         for (int e = -5; e <= 5; e++)
         {
-            for (int d = 1; d < 20; d++)
+            for (int d = 0; d < 20; d++)
             {
                 Vector3Int pos = startPos + (Vector3Int)Vessel.directions[(int)direction] * d;
                 if ((int)direction % 2 == 1) 
@@ -60,7 +61,7 @@ public class Npc : MonoBehaviour
 
     void CheckSight()
     {
-        if (tilePos.Contains(Vessel.pos))
-            transform.localScale = new(3, 1, 1);
+        if (tilePos.Contains(Ghost.pos))
+            Instantiate(alert, transform.position + new Vector3(0.5f, 3), new());
     }
 }
