@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followThing: {fileID: 784632497}
-  camera: {fileID: 1064668753}
+  cam: {fileID: 1064668753}
 --- !u!1 &285346034
 GameObject:
   m_ObjectHideFlags: 0
