@@ -23,7 +23,7 @@ public class Door : MonoBehaviour
     {
         foreach (Vector2Int pos in tilePositions)
             Interactables.positions.Remove(pos);
-        Interactables.interactables.Remove(new LockedDoor("Door", true));
+        Interactables.interactables.Remove(new LockedDoor("Door", gameObject , true));
         if(keyObtained)
         {
             ButtonPress.Door(doorPart, walls, tilePositions, null, true);
