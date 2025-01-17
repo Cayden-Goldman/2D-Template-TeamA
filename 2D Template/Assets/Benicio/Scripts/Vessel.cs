@@ -149,6 +149,8 @@ public class Vessel : MonoBehaviour
                         obj.transform.position = transform.position + (Vector3)(Vector2)delta;
                         yield return null;
                     }
+                    transform.position = (Vector2)pos;
+                    obj.transform.position = transform.position + (Vector3)(Vector2)delta;
                 }
             }
             else if (!Interactables.positions.Contains(pos + delta))
@@ -162,28 +164,63 @@ public class Vessel : MonoBehaviour
                     transform.position = Vector2.Lerp(startPos, pos, t);
                     yield return null;
                 }
+                transform.position = (Vector2)pos;
             }
             moving = false;
-            for (int i = 0; i < 4; i++)
+            if (!interactPending)
             {
-                if (!interactPending && Interactables.positions.Contains(pos + directions[i]))
+                for (int i = 0; i < 4; i++)
                 {
-                    Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
-                    if (!interactable.ghostOnly)
+                    if (Movable.positions.Contains(pos + directions[i]) && walls.GetTile((Vector3Int)(pos + directions[i] * 2)) != null && walls.GetTile((Vector3Int)(pos + directions[i] * -1)) == null)
                     {
-                        SetText(interactable.text, new Vector2(0.5f, 1) + directions[i]);
+                        GameObject movable = Movable.objects[Movable.positions.IndexOf(pos + directions[i])];
+                        SetText("Pull", new Vector2(0.5f, 1) + directions[i]);
                         interactPending = true;
                         while (!moving)
                         {
                             yield return null;
                             if (Input.GetKeyDown(KeyCode.E) && canMove)
                             {
-                                interactable.Interact();
+                                delta = directions[i] * -1;
+                                Movable.positions[Movable.positions.IndexOf(pos + directions[i])] += delta;
+                                moving = true;
+                                animator.SetInteger("Direction", (i + 2) % 4);
+                                animator.SetBool("IsWalking", true);
+                                Vector2Int startPos = pos;
+                                pos += delta;
+                                for (float t = 0; t < 1; t += Time.deltaTime * 6)
+                                {
+                                    transform.position = Vector2.Lerp(startPos, pos, t);
+                                    movable.transform.position = transform.position - (Vector3)(Vector2)delta;
+                                    yield return null;
+                                }
+                                transform.position = (Vector2)pos;
+                                movable.transform.position = transform.position - (Vector3)(Vector2)delta;
+                                moving = false;
+                                break;
                             }
                         }
                         interactPending = false;
                         interactText.SetActive(false);
-                        break; 
+                        break;
+                    }
+                    else if (Interactables.positions.Contains(pos + directions[i]))
+                    {
+                        Interactable interactable = Interactables.interactables[Interactables.positions.IndexOf(pos + directions[i])];
+                        if (!interactable.ghostOnly)
+                        {
+                            SetText(interactable.text, new Vector2(0.5f, 1) + directions[i]);
+                            interactPending = true;
+                            while (!moving)
+                            {
+                                yield return null;
+                                if (Input.GetKeyDown(KeyCode.E) && canMove)
+                                    interactable.Interact();
+                            }
+                            interactPending = false;
+                            interactText.SetActive(false);
+                            break;
+                        }
                     }
                 }
             }
