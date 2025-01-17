@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UiManager : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class UiManager : MonoBehaviour
     }
     IEnumerator FadeIn()
     {
-        for (float a = 1; a < 0; a -= Time.unscaledDeltaTime)
+        for (float a = 1; a > 0; a -= Time.unscaledDeltaTime * 2)
         {
             yield return null;
             black.color = new(0, 0, 0, a);
@@ -57,7 +58,7 @@ public class UiManager : MonoBehaviour
         StartCoroutine(FadeTint(0.75f));
         GameObject menu = Instantiate(failMenu, transform);
         menu.transform.SetSiblingIndex(transform.childCount - 2);
-
+        menu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = failDetails;
     }
 
     void Retry()
@@ -66,7 +67,7 @@ public class UiManager : MonoBehaviour
     }
     IEnumerator RetrySequence()
     {
-        for (float a = 0; a < 1; a += Time.unscaledDeltaTime)
+        for (float a = 0; a < 1; a += Time.unscaledDeltaTime * 2)
         {
             yield return null;
             black.color = new(0, 0, 0, a);
@@ -81,7 +82,7 @@ public class UiManager : MonoBehaviour
     }
     IEnumerator ExitSequence()
     {
-        for (float a = 0; a < 1; a += Time.unscaledDeltaTime)
+        for (float a = 0; a < 1; a += Time.unscaledDeltaTime * 2)
         {
             yield return null;
             black.color = new(0, 0, 0, a);

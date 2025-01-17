@@ -2,7 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Vessel : MonoBehaviour
@@ -28,6 +27,7 @@ public class Vessel : MonoBehaviour
     bool updatingShader;
     float ghostTimer;
     bool interactPending;
+    bool timeOut;
 
     void Awake()
     {
@@ -39,7 +39,8 @@ public class Vessel : MonoBehaviour
 
     void Start()
     {
-        ghostMode = false;
+        ghostMode = paused = false;
+        canMove = true;
         pos = new((int)transform.position.x, (int)transform.position.y);
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
@@ -121,7 +122,7 @@ public class Vessel : MonoBehaviour
     {
         GetComponentInChildren<ParticleSystem>().Play();
         animator.SetBool("IsPossessed", false);
-        yield return new WaitUntil(() => !ghostMode);
+        yield return new WaitUntil(() => !ghostMode || timeOut);
         animator.SetBool("IsPossessed", true);
         GetComponentInChildren<ParticleSystem>().Stop();
     }
@@ -230,15 +231,16 @@ public class Vessel : MonoBehaviour
             {
                 ghostTimer -= Time.deltaTime;
                 SetText(Mathf.CeilToInt(ghostTimer) + "", new(0.5f, 1));
-                if (ghostTimer < 3)
-                {
+                if (ghostTimer < 5)
                     text.color = Color.red + Color.cyan * Mathf.CeilToInt(Mathf.Sin(Time.time * 10));
-                }
             }
             else if (ghostTimer <= 0)
             {
-                UiManager.failDetails = "Your vessel woke up!";
+                UiManager.failDetails = "Your vessel woke up";
                 UiManager.fail.Invoke();
+                timeOut = true;
+                Ghost.canMove = false;
+                break;
             }
             yield return null;
         }
