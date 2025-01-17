@@ -33,7 +33,7 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new KeyItem("Take"));
                 break;
             case (Objects)3:
-                interactables.Add(new LockedDoor("Unlock", false, true));
+                interactables.Add(new LockedDoor("Unlock", gameObject, false, true));
                 break;
             case (Objects)4:
                 interactables.Add(new Guard("Talk", gameObject, false, true));
@@ -103,16 +103,17 @@ public class KeyItem : Interactable
 
 public class LockedDoor : Interactable
 {
-    public LockedDoor(string text, bool ghostOnly = false, bool vesselOnly = false)
+    public LockedDoor(string text, GameObject obj, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
+        this.obj = obj;
         this.ghostOnly = ghostOnly;
         this.vesselOnly = vesselOnly;
     }
 
     public override void Interact()
     {
-        Door.evetn.Invoke();
+        obj.GetComponent<Door>().Open();
     }
 }
 
@@ -144,6 +145,5 @@ public class Brazier : Interactable
     public override void Interact()
     {
         obj.GetComponent<BrazierScript>().Light();
-
     }
 }

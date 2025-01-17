@@ -13,6 +13,7 @@ public class BrazierScript : MonoBehaviour
     Tilemap walls;
     private void Start()
     {
+        braziersLit = 0;
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         foreach (Vector2Int pos in tilePositions)
             walls.SetTile((Vector3Int)pos, invisibleTile);
