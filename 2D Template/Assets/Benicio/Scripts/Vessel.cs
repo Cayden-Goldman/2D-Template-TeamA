@@ -102,6 +102,10 @@ public class Vessel : MonoBehaviour
             else
                 animator.SetBool("IsWalking", false);
         }
+        else if (!canMove)
+        {
+            animator.SetBool("IsWalking", false);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!paused)

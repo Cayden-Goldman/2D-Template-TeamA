@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class Door : MonoBehaviour
@@ -23,10 +22,8 @@ public class Door : MonoBehaviour
     {
         if(keyObtained)
         {
+            Interactables.RemoveInteractable(gameObject);
             ButtonPress.Door(doorPart, walls, tilePositions, null, true);
-            foreach (Vector2Int pos in tilePositions)
-                Interactables.positions.Remove(pos);
-            Interactables.interactables.Remove(new LockedDoor("Door", gameObject, true));
         }
     }
 }

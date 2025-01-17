@@ -30,7 +30,7 @@ public class Interactables : MonoBehaviour
                 interactables.Add(new Lever("Pull", gameObject));
                 break;
             case (Objects)2:
-                interactables.Add(new KeyItem("Take"));
+                interactables.Add(new KeyItem("Take", gameObject));
                 break;
             case (Objects)3:
                 interactables.Add(new LockedDoor("Unlock", gameObject, false, true));
@@ -41,6 +41,19 @@ public class Interactables : MonoBehaviour
             case (Objects)5:
                 interactables.Add(new Brazier("Light", gameObject));
                 break;
+        }
+    }
+    
+    public static void RemoveInteractable(GameObject obj)
+    {
+        for (int i = 0; i < interactables.Count; i++)
+        {
+            if (interactables[i].obj == obj)
+            {
+                interactables.RemoveAt(i);
+                positions.RemoveAt(i);
+                break;
+            }
         }
     }
 }
@@ -88,9 +101,10 @@ public class Lever : Interactable
 
 public class KeyItem : Interactable
 {
-    public KeyItem(string text, bool ghostOnly = false, bool vesselOnly = false)
+    public KeyItem(string text, GameObject obj, bool ghostOnly = false, bool vesselOnly = false)
     {
         this.text = text;
+        this.obj = obj;
         this.ghostOnly = ghostOnly;
         this.vesselOnly = vesselOnly;
     }

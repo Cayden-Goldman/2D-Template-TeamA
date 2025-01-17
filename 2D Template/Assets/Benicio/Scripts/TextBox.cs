@@ -13,6 +13,7 @@ public class TextBox : MonoBehaviour
     public TextMeshProUGUI text;
 
     RectTransform rect;
+    bool writing;
 
     void Start()
     {
@@ -27,12 +28,14 @@ public class TextBox : MonoBehaviour
 
     IEnumerator WriteText()
     {
+        yield return new WaitUntil(() => !writing);
         text.text = "";
         nameText.text = (string)names.Dequeue();
         Vessel.canMove = false;
         Ghost.canMove = false;
         Vessel.paused = true;
-        for (float t = 0; t < Mathf.PI / 2f; t += Time.deltaTime)
+        writing = true;
+        for (float t = 0; t < Mathf.PI / 2f; t += Time.deltaTime * 1.5f)
         {
             rect.anchoredPosition = Vector3.Lerp(new(0, -720), new(0, -288), Mathf.Pow(Mathf.Sin(t), 2));
             yield return null;
@@ -53,11 +56,12 @@ public class TextBox : MonoBehaviour
         Vessel.canMove = true;
         Ghost.canMove = true;
         Vessel.paused = false;
-        for (float t = 0; t < Mathf.PI / 2f; t += Time.deltaTime)
+        for (float t = 0; t < Mathf.PI / 2f; t += Time.deltaTime * 1.5f)
         {
             rect.anchoredPosition = Vector3.Lerp(new(0, -288), new(0, -720), Mathf.Pow(Mathf.Sin(t), 2));
             yield return null;
         }
+        writing = false;
     }
 
     public static void AddDialogue(string name, string text, bool start = false)

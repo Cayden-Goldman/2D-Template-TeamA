@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
@@ -25,8 +23,7 @@ public class Key : MonoBehaviour
     public void GrabKey()
     {
         door.GetComponent<Door>().keyObtained = true;
-        Interactables.positions.Remove(new Vector2Int(MathF.Round(transform.position.x).ConvertTo<int>(), MathF.Round(transform.position.x).ConvertTo<int>()));
-        Interactables.interactables.Remove(new KeyItem("Take", true));
+        Interactables.RemoveInteractable(gameObject);
         Destroy(gameObject);
     }
 }
