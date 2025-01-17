@@ -29,6 +29,14 @@ public class Vessel : MonoBehaviour
     float ghostTimer;
     bool interactPending;
 
+    void Awake()
+    {
+        Movable.positions = new();
+        Movable.objects = new();
+        Interactables.positions = new();
+        Interactables.interactables = new();
+    }
+
     void Start()
     {
         ghostMode = false;
