@@ -3336,6 +3336,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 655635981157327295, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1527896415}
     - target: {fileID: 2159406279944431002, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8920,6 +8924,22 @@ PrefabInstance:
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: orthographic size
+      value: 5.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
       value: 0
       objectReference: {fileID: 0}
@@ -8951,6 +8971,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.1792453
       objectReference: {fileID: 0}
+    - target: {fileID: 7759873850348205950, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759873850348205950, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: m_Cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7844067460089601190, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -8962,6 +8990,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+--- !u!20 &1527896415 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+  m_PrefabInstance: {fileID: 1501964156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1925055570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 558184851722695378, guid: 7d168b7fd652c2f46a4dd0e47f20b3dd, type: 3}

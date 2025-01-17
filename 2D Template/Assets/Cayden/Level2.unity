@@ -19963,8 +19963,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -20013,6 +20025,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+--- !u!20 &1169169281 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+  m_PrefabInstance: {fileID: 1169169280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1194557485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21228,9 +21245,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 655635981157327295, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1169169281}
     - target: {fileID: 7204993058217423295, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

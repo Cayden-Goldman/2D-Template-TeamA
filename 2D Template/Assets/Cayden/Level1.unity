@@ -651,6 +651,11 @@ Transform:
   m_Father: {fileID: 1826586605}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &177278544 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+  m_PrefabInstance: {fileID: 570355948414819818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &193687421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12880,10 +12885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2159406279944431002, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 655635981157327295, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 177278544}
     - target: {fileID: 7204993058217423295, guid: c4ead659a7fc40549bd09536417f6ba4, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -13568,8 +13573,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 845712498}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -13577,7 +13594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.016949153
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -13585,7 +13602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.96769065
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
