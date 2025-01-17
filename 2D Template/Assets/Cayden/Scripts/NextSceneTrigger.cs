@@ -11,7 +11,8 @@ public class NextSceneTrigger : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(nextScene);
+            UiManager.nextScene = nextScene;
+            UiManager.proceed.Invoke();
         }
     }
 }

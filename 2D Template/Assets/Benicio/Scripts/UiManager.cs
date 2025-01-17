@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor;
 
 public class UiManager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class UiManager : MonoBehaviour
     public static UnityEvent retry = new();
     public static UnityEvent exit = new();
     public static UnityEvent fail = new();
+    public static UnityEvent proceed = new();
     public static string failDetails;
+    public static string nextScene;
 
     public Image tint;
     public Image black;
@@ -27,12 +30,13 @@ public class UiManager : MonoBehaviour
         retry.AddListener(Retry);
         exit.AddListener(Exit);
         fail.AddListener(Fail);
+        proceed.AddListener(Proceed);
         fadeTarget = tint.color.a;
         StartCoroutine(FadeIn());
     }
     IEnumerator FadeIn()
     {
-        for (float a = 1; a > 0; a -= Time.unscaledDeltaTime * 2)
+        for (float a = 1; a > 0; a -= Time.unscaledDeltaTime * 1.5f)
         {
             yield return null;
             black.color = new(0, 0, 0, a);
@@ -79,16 +83,22 @@ public class UiManager : MonoBehaviour
 
     void Exit()
     {
-        StartCoroutine(ExitSequence());
+        StartCoroutine(SceneSwitchSequence("Title Scene"));
     }
-    IEnumerator ExitSequence()
+
+    void Proceed()
     {
-        for (float a = 0; a < 1; a += Time.unscaledDeltaTime * 2)
+        StartCoroutine(SceneSwitchSequence(nextScene));
+    }
+
+    IEnumerator SceneSwitchSequence(string scene)
+    {
+        for (float a = 0; a < 1; a += Time.unscaledDeltaTime * 1.5f)
         {
             yield return null;
             black.color = new(0, 0, 0, a);
         }
-        SceneManager.LoadScene("Title Scene");
+        SceneManager.LoadScene(scene);
     }
 
     IEnumerator FadeTint(float target)
