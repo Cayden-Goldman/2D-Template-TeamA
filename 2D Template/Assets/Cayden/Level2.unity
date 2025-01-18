@@ -503,7 +503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263383974837109768, guid: 4216d686e6e014a45b6cdd91319cca69, type: 3}
       propertyPath: dialogue
-      value: Leave me alone whlie im working
+      value: Yo wuts chillin wit you
       objectReference: {fileID: 0}
     - target: {fileID: 3263383974837109768, guid: 4216d686e6e014a45b6cdd91319cca69, type: 3}
       propertyPath: direction
@@ -511,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263383974837109768, guid: 4216d686e6e014a45b6cdd91319cca69, type: 3}
       propertyPath: guardName
-      value: Stephen
+      value: Ralph
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -10952,11 +10952,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263383974837109768, guid: 4216d686e6e014a45b6cdd91319cca69, type: 3}
       propertyPath: dialogue
-      value: Yo wuts chillin wit you
+      value: Leave me alone whlie im working...
       objectReference: {fileID: 0}
     - target: {fileID: 3263383974837109768, guid: 4216d686e6e014a45b6cdd91319cca69, type: 3}
       propertyPath: guardName
-      value: Ralph
+      value: Stephen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
