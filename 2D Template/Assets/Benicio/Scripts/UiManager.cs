@@ -83,7 +83,7 @@ public class UiManager : MonoBehaviour
 
     void Exit()
     {
-        StartCoroutine(SceneSwitchSequence("Title Scene"));
+        StartCoroutine(SceneSwitchSequence("Title Scene 2"));
     }
 
     void Proceed()

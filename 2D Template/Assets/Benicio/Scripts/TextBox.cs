@@ -61,6 +61,7 @@ public class TextBox : MonoBehaviour
             rect.anchoredPosition = Vector3.Lerp(new(0, -288), new(0, -720), Mathf.Pow(Mathf.Sin(t), 2));
             yield return null;
         }
+        rect.anchoredPosition = new(0, -720);
         writing = false;
     }
 
