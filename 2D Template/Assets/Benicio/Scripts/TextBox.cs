@@ -50,7 +50,7 @@ public class TextBox : MonoBehaviour
                 yield return new WaitForSeconds(0.02f);
                 text.text += nextText[i];
             }
-            AudioManager.loopChannels[0] = true;
+            AudioManager.loopChannels[0] = 2;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
         Vessel.canMove = true;

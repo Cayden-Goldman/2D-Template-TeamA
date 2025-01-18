@@ -22,6 +22,7 @@ public class ButtonPress : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
         {
+            StartCoroutine(AudioManager.PlaySound("ButtonPress"));
             GetComponent<Animator>().SetBool("IsPressed", true);
             Door(door, walls, tilePositions, null, true);
         }

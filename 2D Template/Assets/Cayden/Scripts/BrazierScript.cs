@@ -23,7 +23,7 @@ public class BrazierScript : MonoBehaviour
         GetComponentInChildren<ParticleSystem>().Play();
         GetComponentInChildren<Light2D>().enabled = true;
         braziersLit++;
-        
+        StartCoroutine(AudioManager.PlaySound("FireLighting"));
         switch (braziersLit)
         {
             case 4:
@@ -33,6 +33,5 @@ public class BrazierScript : MonoBehaviour
                 ButtonPress.Door(doors[1], walls, tilePositions, null, true);
                 break;
         }
-
     }
 }

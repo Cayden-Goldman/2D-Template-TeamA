@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class LeverEvent : MonoBehaviour
@@ -20,7 +18,8 @@ public class LeverEvent : MonoBehaviour
     }
     public void OpenDoor()
     {
-        if(aktiv)
+        StartCoroutine(AudioManager.PlaySound("LeverPull"));
+        if (aktiv)
         {
             ButtonPress.Door(door, walls, tilePositions, invisibleTile, aktiv = !aktiv);
             GetComponent<Animator>().SetBool("IsPulled", false);

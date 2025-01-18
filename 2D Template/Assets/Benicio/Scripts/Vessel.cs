@@ -45,7 +45,7 @@ public class Vessel : MonoBehaviour
         walls = GameObject.Find("Collidables").GetComponent<Tilemap>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        if(SceneManager.GetActiveScene().name == "guh")
+        if (SceneManager.GetActiveScene().name == "guh")
         {
             ghostMode = true;
             sr.material = defaultMat;
@@ -78,7 +78,11 @@ public class Vessel : MonoBehaviour
                     StartCoroutine(Sleeping());
                 }
                 else
+                {
                     animator.SetBool("IsWalking", false);
+                    if (AudioManager.loopChannels[3] == 1)
+                        AudioManager.loopChannels[3] = 2;
+                }
                 if (directionDown > -1)
                 {
                     StartCoroutine(Move(directions[directionDown]));
@@ -105,6 +109,8 @@ public class Vessel : MonoBehaviour
         else if (!canMove)
         {
             animator.SetBool("IsWalking", false);
+            if (AudioManager.loopChannels[3] == 1)
+                AudioManager.loopChannels[3] = 2;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -145,6 +151,8 @@ public class Vessel : MonoBehaviour
                     GameObject obj = Movable.objects[Movable.positions.IndexOf(pos + delta)];
                     Movable.positions[Movable.positions.IndexOf(pos + delta)] += delta;
                     moving = true;
+                    if (AudioManager.loopChannels[3] == 0)
+                        StartCoroutine(AudioManager.PlaySound("Footsteps", 3));
                     animator.SetBool("IsWalking", true);
                     Vector2Int startPos = pos;
                     pos += delta;
@@ -162,6 +170,8 @@ public class Vessel : MonoBehaviour
             else if (!Interactables.positions.Contains(pos + delta))
             {
                 moving = true;
+                if (AudioManager.loopChannels[3] == 0)
+                    StartCoroutine(AudioManager.PlaySound("Footsteps", 3));
                 animator.SetBool("IsWalking", true);
                 Vector2Int startPos = pos;
                 pos += delta;
@@ -190,6 +200,8 @@ public class Vessel : MonoBehaviour
                                 delta = directions[i] * -1;
                                 Movable.positions[Movable.positions.IndexOf(pos + directions[i])] += delta;
                                 moving = true;
+                                if (AudioManager.loopChannels[3] == 0)
+                                    StartCoroutine(AudioManager.PlaySound("Footsteps", 3));
                                 animator.SetInteger("Direction", (i + 2) % 4);
                                 animator.SetBool("IsWalking", true);
                                 Vector2Int startPos = pos;

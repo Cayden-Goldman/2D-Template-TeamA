@@ -22,6 +22,7 @@ public class Key : MonoBehaviour
     }
     public void GrabKey()
     {
+        StartCoroutine(AudioManager.PlaySound("KeyPickup"));
         door.GetComponent<Door>().keyObtained = true;
         Interactables.RemoveInteractable(gameObject);
         Destroy(gameObject);

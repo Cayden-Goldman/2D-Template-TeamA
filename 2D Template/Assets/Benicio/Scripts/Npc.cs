@@ -62,6 +62,9 @@ public class Npc : MonoBehaviour
     void CheckSight()
     {
         if (tilePos.Contains(Ghost.pos))
+        {
             Instantiate(alert, transform.position + new Vector3(0.5f, 3), new());
+            StartCoroutine(AudioManager.PlaySound("Detection"));
+        }
     }
 }

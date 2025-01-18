@@ -23,6 +23,7 @@ public class MenuButtons : MonoBehaviour
 
     public void Resume()
     {
+        StartCoroutine(AudioManager.PlaySound("UIButtonClick"));
         Vessel.paused = false;
         UiManager.pause.Invoke();
         Time.timeScale = 1;
@@ -30,11 +31,13 @@ public class MenuButtons : MonoBehaviour
 
     public void Retry()
     {
+        StartCoroutine(AudioManager.PlaySound("UIButtonClick"));
         UiManager.retry.Invoke();
     }
 
     public void ExitToMenu()
     {
+        StartCoroutine(AudioManager.PlaySound("UIButtonClick"));
         UiManager.exit.Invoke();
     }
 }

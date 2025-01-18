@@ -22,6 +22,7 @@ public class Door : MonoBehaviour
     {
         if(keyObtained)
         {
+            StartCoroutine(AudioManager.PlaySound("DoorUnlock"));
             Interactables.RemoveInteractable(gameObject);
             ButtonPress.Door(doorPart, walls, tilePositions, null, true);
         }
