@@ -13,6 +13,10 @@ public class BossThingy : MonoBehaviour
         if (collision.gameObject.CompareTag("Ghost"))
             onBoss = true;
     }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        onBoss = false;
+    }
 
     // Update is called once per frame
     void Update()
