@@ -7,6 +7,8 @@ public class BossThingy : MonoBehaviour
 {
     public bool onBoss;
     public GameObject ghost;
+    public Material possessMat;
+    public string nextScene;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         ghost = collision.gameObject;
@@ -24,7 +26,9 @@ public class BossThingy : MonoBehaviour
         if (onBoss && Input.GetKeyDown(KeyCode.Space))
         {
             ghost.SetActive(false);
-            SceneManager.LoadScene("Title Scene");
+            GetComponent<SpriteRenderer>().material = possessMat;
+            UiManager.nextScene = nextScene;
+            UiManager.proceed.Invoke();
         }
     }
 }

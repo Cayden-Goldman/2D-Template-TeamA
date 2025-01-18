@@ -21971,6 +21971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBoss: 0
   ghost: {fileID: 0}
+  possessMat: {fileID: -876546973899608171, guid: 27d47a04be065a047b18520805780472, type: 3}
+  nextScene: Title Scene
 --- !u!20 &1973735121 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1755166902271199582, guid: 80aec87ccff50154ea496e31f8850670, type: 3}
